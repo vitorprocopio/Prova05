@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.contmatic.endereco.Endereco;
+import br.com.contmatic.enums.Estado;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
@@ -18,7 +19,7 @@ public class EmpresaTest {
     
     @Before 
     public void init () {
-        endereco = new Endereco ("03315000", "Rua Padre Estevão Pernet", 215, null, "Tatuapé", "São Paulo", "SP", "Brasil");
+        endereco = new Endereco ("03315000", "Rua Padre Estevão Pernet", 215, null, "Tatuapé", "São Paulo", Estado.SP, "Brasil");
         empresa = new Empresa("303", "58119371000177", "Contmatic", "Softmatic Ltda.", endereco);        
     }
     

@@ -14,6 +14,8 @@ import org.junit.runners.MethodSorters;
 
 import br.com.contmatic.banco.ContaBancaria;
 import br.com.contmatic.endereco.Endereco;
+import br.com.contmatic.enums.Estado;
+import br.com.contmatic.enums.Genero;
 import br.com.contmatic.hora.Horario;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -34,9 +36,9 @@ public class FuncionarioTest {
     public void init() {
         horario = new Horario(entrada, saidaAlmoco, retornoAlmoco, saida);
         conta = new ContaBancaria("Joana Pereira","321","7654");
-        endereco = new Endereco("01234567", "Rua 1 de Abril", 1, "Bloco 1 Apto 102", "Bairro Um", "São Paulo", "SP", "Brasil");
+        endereco = new Endereco("01234567", "Rua 1 de Abril", 1, "Bloco 1 Apto 102", "Bairro Um", "São Paulo", Estado.SP, "Brasil");
         data = LocalDate.of(1986,01,06);
-        funcionario = new Funcionario("54", "Joana Pereira", data, "Francisca Pereira", "Antonio Pereira", "12345678909", "F", 3500.77, endereco, conta, horario);
+        funcionario = new Funcionario("54", "Joana Pereira", data, "Francisca Pereira", "Antonio Pereira", "12345678909", Genero.F, 3500.77, endereco, conta);
     }
     
     @Test(expected = IllegalArgumentException.class)
@@ -271,31 +273,6 @@ public class FuncionarioTest {
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_Sexo_nulo() {
         funcionario.setSexo(null);
-    }
-    
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_Sexo_em_branco() {
-        funcionario.setSexo(" ");  
-    }
-    
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_Sexo_vazio() {
-        funcionario.setSexo("");
-    }
-    
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_Sexo_com_mais_de_1_digito() {
-        funcionario.setSexo("FF"); 
-    }
-        
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_Sexo_com_numeros() {
-        funcionario.setSexo("1");
-    }
-    
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_Sexo_com_caracteres_especiais() {
-        funcionario.setSexo("@");
     }
     
     @Test

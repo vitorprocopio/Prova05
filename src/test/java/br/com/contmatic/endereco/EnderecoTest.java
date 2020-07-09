@@ -8,6 +8,8 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import br.com.contmatic.enums.Estado;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
 public class EnderecoTest {
@@ -16,7 +18,7 @@ public class EnderecoTest {
     
     @Before
     public void init () {
-        endereco = new Endereco("01234567", "Rua 1 de Abril", 1, "Bloco 1 Apto 102", "Bairro Um", "São Paulo", "SP", "Estados Unidos");
+        endereco = new Endereco("01234567", "Rua 1 de Abril", 1, "Bloco 1 Apto 102", "Bairro Um", "São Paulo", Estado.SP, "Estados Unidos");
     }
     
     @Test(expected = IllegalArgumentException.class)
@@ -215,41 +217,6 @@ public class EnderecoTest {
     @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_UF_nulo() {
         endereco.setUf(null);
-    }
-    
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_UF_em_branco() {
-        endereco.setUf("  ");  
-    }
-    
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_UF_vazio() {
-        endereco.setUf("");
-    }
-    
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_UF_com_menos_de_dois_digitos() {
-        endereco.setUf("S"); 
-    }
-    
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_UF_com_mais_de_dois_digitos() {
-        endereco.setUf("SPA"); 
-    }
-        
-    @Test (expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_UF_com_numeros() {
-        endereco.setUf("S1");
-    }
-    
-    @Test (expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_UF_com_caracteres_especiais() {
-        endereco.setUf("S@");
-    }
-    
-    @Test (expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_UF_com_espacos() {
-        endereco.setUf(" S");
     }
     
     @Test

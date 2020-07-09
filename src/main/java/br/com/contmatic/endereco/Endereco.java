@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import br.com.contmatic.enumerator.Estado;
+import br.com.contmatic.enums.Estado;
 
 public class Endereco {
     
@@ -266,7 +266,7 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return "Endereco [cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", complemento=" + complemento + ", bairro=" + bairro + ", cidade=" + cidade + ", uf=" + uf.getUf() + ", pais=" + pais + "]";
+        return "Endereco [cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", complemento=" + complemento + ", bairro=" + bairro + ", cidade=" + cidade + ", uf=" + uf.getNome() + ", pais=" + pais + "]";
     }
     
 }

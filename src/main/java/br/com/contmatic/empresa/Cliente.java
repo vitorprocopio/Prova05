@@ -11,7 +11,7 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.br.CPF;
 
-import br.com.contmatic.annotation.DataApos1900;
+import br.com.contmatic.annotations.DataApos1900;
 import br.com.contmatic.contato.Contato;
 import br.com.contmatic.endereco.Endereco;
 //import br.com.contmatic.validacao.ValidaCpf;
