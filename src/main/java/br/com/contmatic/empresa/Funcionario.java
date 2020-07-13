@@ -55,13 +55,14 @@ public class Funcionario {
     @Digits(integer = 5, fraction = 2, message = "O valor do salário está inválido")
     private double salario;
 
-    // @NotNull(message = "Não deve aceitar horário nulo")
+    @NotNull(message = "Não deve aceitar horário nulo")
     private Horario horario;
 
     @NotNull(message = "Não deve aceitar Conta Bancaria nulo")
     private ContaBancaria conta;
 
-    public Funcionario(String codigo, String nome, LocalDate dataNascimento, String nomeMae, String nomePai, String cpf, Genero sexo, double salario, Endereco endereco, ContaBancaria conta) {
+    public Funcionario(String codigo, String nome, LocalDate dataNascimento, String nomeMae, String nomePai, String cpf, Genero sexo, double salario, Endereco endereco, ContaBancaria conta,
+                       Horario horario) {
         this.setCodigo(codigo);
         this.setNome(nome);
         this.setDataNascimento(dataNascimento);
@@ -72,6 +73,7 @@ public class Funcionario {
         this.setSalario(salario);
         this.setEndereco(endereco);
         this.setConta(conta);
+        this.setHorario(horario);
     }
 
     public String getCodigo() {

@@ -22,7 +22,7 @@ public class Cliente {
     @NotEmpty(message = "Não deve aceitar código nulo nem vazio")
     private String codigo;
     
-	@Pattern(regexp = "^[A-ZÀ-Úa-zà-ú][A-ZÀ-Ú a-zà-ú]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome inválido")
+	@Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome inválido")
     @NotBlank(message = "Não deve aceitar nome nulo nem vazio")
     private String nome;
     

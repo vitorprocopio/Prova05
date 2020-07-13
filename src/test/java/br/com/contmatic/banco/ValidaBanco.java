@@ -23,6 +23,7 @@ public class ValidaBanco {
     }
 
     public static boolean valida(ContaBancaria conta) {
+        System.out.println(conta);
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         Set<ConstraintViolation<ContaBancaria>> violacoes = validator.validate(conta);

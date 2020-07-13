@@ -23,6 +23,7 @@ public class ValidaHorario {
     }
 
     public static boolean valida(Horario horario) {
+        System.out.println(horario);
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         Set<ConstraintViolation<Horario>> violacoes = validator.validate(horario);

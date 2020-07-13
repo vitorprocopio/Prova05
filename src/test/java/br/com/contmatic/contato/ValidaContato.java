@@ -23,6 +23,7 @@ public class ValidaContato {
     }
 
     public static boolean valida(Contato contato) {
+        System.out.println(contato);
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         Set<ConstraintViolation<Contato>> violacoes = validator.validate(contato);

@@ -23,6 +23,7 @@ public class ValidaFuncionario {
     }
 
     public static boolean valida(Funcionario funcionario) {
+        System.out.println(funcionario);
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         Set<ConstraintViolation<Funcionario>> violacoes = validator.validate(funcionario);

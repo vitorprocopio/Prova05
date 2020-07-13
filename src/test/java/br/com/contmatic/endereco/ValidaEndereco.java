@@ -23,6 +23,7 @@ public class ValidaEndereco {
     }
 
     public static boolean valida(Endereco endereco) {
+        System.out.println(endereco);
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         Set<ConstraintViolation<Endereco>> violacoes = validator.validate(endereco);

@@ -23,6 +23,7 @@ public class ValidaEmpresa {
     }
 
     public static boolean valida(Empresa empresa) {
+        System.out.println(empresa);
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         Set<ConstraintViolation<Empresa>> violacoes = validator.validate(empresa);

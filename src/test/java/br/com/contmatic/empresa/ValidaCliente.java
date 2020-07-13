@@ -23,6 +23,7 @@ public class ValidaCliente {
     }
 
     public static boolean valida(Cliente cliente) {
+        System.out.println(cliente);
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         Set<ConstraintViolation<Cliente>> violacoes = validator.validate(cliente);

@@ -23,12 +23,12 @@ public class Empresa {
     
 	@Size(max=100)
     @NotBlank(message = "Nome fantasia não pode ser nulo nem vazio")
-	@Pattern(regexp = "^[0-9A-Za-z'!@#$%&*-+_§.,;][0-9A-Z a-z'!@#$%&*-+_§.,;]{0,98}[0-9A-Za-z'!@#$%&*-+_§.,;]$", message = "Nome fantasia inválido")
+	@Pattern(regexp = "^['A-ZÀ-Úa-zà-ú0-9!@#$%&*-+_§.,;]['A-ZÀ-Ú a-zà-ú0-9!@#$%&*-+_§.,;]{0,98}['A-ZÀ-Úa-zà-ú0-9!@#$%&*-+_§.,;]$", message = "Nome fantasia inválido")
     private String nomeFantasia;
    
 	@Size(max=100)
     @NotBlank(message = "Razão social não pode ser nulo nem vazio")
-	@Pattern(regexp = "^[0-9A-Za-z'!@#$%&*-+_§.,;][0-9A-Z a-z'!@#$%&*-+_§.,;]{0,98}[0-9A-Za-z'!@#$%&*-+_§.,;]$", message = "Razão social inválido")
+	@Pattern(regexp = "^[0-9A-ZÀ-Úa-zà-ú'!@#$%&*-+_§.,;][ 0-9A-ZÀ-Úa-zà-ú'!@#$%&*-+_§.,;]{0,98}[0-9A-ZÀ-Úa-zà-ú'!@#$%&*-+_§.,;]$", message = "Razão social inválido")
     private String razaoSocial;
     
     @NotNull(message = "Endereço não pode ser nulo")

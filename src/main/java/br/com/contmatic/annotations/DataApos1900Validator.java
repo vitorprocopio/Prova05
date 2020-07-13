@@ -9,7 +9,8 @@ public class DataApos1900Validator implements ConstraintValidator<DataApos1900, 
 
     public boolean isValid(LocalDate data, ConstraintValidatorContext cvc) {
         if (data != null && data.isBefore(LocalDate.of(1900, 1, 1))) {
+            return false;
         }
-        return false;
+        return true;
     }
 }

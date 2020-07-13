@@ -42,279 +42,173 @@ public class ContaBancariaTest {
         assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_espaco_no_comeco_do_nome_do_titular() {
         conta.setTitular(" José");
+        assertFalse(ValidaBanco.valida(conta));
+
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_nome_do_titular_em_branco() {
         conta.setTitular("  ");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_titular_vazio() {
         conta.setTitular("");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_titular_com_numeros() {
         conta.setTitular("Jose 1");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_titular_com_caracteres_especiais() {
         conta.setTitular("@José");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
     @Test
     public void deve_aceitar_titular_nao_nulo_somente_com_letras_e_espacos_de_1_até_100_caracteres() {
-        assertTrue(ValidaBanco.valida(conta));
+        assertTrue(ValidaBanco.valida(Fixture.from(ContaBancaria.class).gimme("valido")));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_titular_maior_que_cem_caracteres() {
         String maior = "a";
         for(int i = 0 ; i < 100 ; i++) {
             maior += "a";
         }
         conta.setTitular(maior);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_titular_nulo_ao_instanciar_novo_objeto() {
-        new ContaBancaria(null, "123", "4567");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_espaco_no_comeco_do_nome_do_titular_ao_instanciar_novo_objeto() {
-        new ContaBancaria(" José", "123", "4567");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_nome_do_titular_em_branco_ao_instanciar_novo_objeto() {
-        new ContaBancaria(" ", "123", "4567");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_titular_vazio_ao_instanciar_novo_objeto() {
-        new ContaBancaria("", "123", "4567");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_titular_com_numeros_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José 1", "123", "4567");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_titular_com_caracteres_especiais_ao_instanciar_novo_objeto() {
-        new ContaBancaria("@José", "123", "4567");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
     @Test
-    public void deve_aceitar_titular_somente_com_letras_e_espacos_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José Silva", "123", "4567");
-        assertEquals("José Silva", conta.getTitular());
+    public void nao_deve_aceitar_numero_invalido() {
+        conta.getTitular();
+        assertFalse(ValidaBanco.valida(Fixture.from(ContaBancaria.class).gimme("numeroInvalido")));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_titular_maior_que_cem_caracteres_ao_instanciar_novo_objeto() {
-        String maior = "a";
-        for(int i = 0 ; i < 100 ; i++) {
-            maior += "a";
-        }
-        new ContaBancaria(maior, "123", "4567");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_numero_nulo() {
         conta.setNumero(null);
+        assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_numero_nulo_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José", null, "4567");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_espaco_no_comeco_do_numero_da_conta() {
         conta.setNumero(" 123");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_espaco_no_comeco_do_numero_da_conta_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José", " 123", "4567");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_numero_da_conta_em_branco() {
         conta.setNumero("  ");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_numero_da_conta_em_branco_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José", "  ", "4567");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_numero_da_conta_vazio() {
         conta.setNumero("");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_numero_da_conta_vazio_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José", null, "4567");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_numero_da_conta_maior_que_vinte_caracteres() {
         String maior = "1";
         for(int i = 0 ; i < 20 ; i++) {
             maior += "1";
         }
         conta.setNumero(maior);
+        assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_numero_da_conta_maior_que_vinte_caracteres_ao_instanciar_novo_objeto() {
-        String maior = "1";
-        for(int i = 0 ; i < 20 ; i++) {
-            maior += "1";
-        }
-        new ContaBancaria("José", maior, "4567");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_numero_da_conta_com_letras() {
         conta.setNumero("123a");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_numero_da_conta_com_letras_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José", "123a", "4567");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_numero_da_conta_com_caracteres_especiais() {
         conta.setNumero("#123");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_numero_da_conta_com_caracteres_especiais_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José", "#123", "4567");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
     @Test
     public void deve_aceitar_somente_numero_da_conta_nao_nulo_com_até_20_digitos_numericos() {
         conta.setNumero("123");
-        assertEquals("123", conta.getNumero());
+        assertTrue(ValidaBanco.valida(Fixture.from(ContaBancaria.class).gimme("valido")));
     }
 
     @Test
-    public void deve_aceitar_somente_numero_da_conta_nao_nulo_com_até_20_digitos_numericos_ao_instanciar_novo_objeto() {
-        assertEquals("123", conta.getNumero());
+    public void nao_deve_aceitar_agencia_invalido() {
+        conta.getTitular();
+        assertFalse(ValidaBanco.valida(Fixture.from(ContaBancaria.class).gimme("agenciaInvalido")));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_agencia_nulo() {
         conta.setAgencia(null);
+        assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_agencia_nulo_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José", "123", null);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_espaco_no_comeco_do_numero_da_agencia() {
         conta.setAgencia(" 4567");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_espaco_no_comeco_do_numero_da_agencia_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José", "123", " 4567");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_numero_da_agencia_em_branco() {
         conta.setAgencia("  ");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_numero_da_agencia_em_branco_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José", "123", "      ");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_numero_da_agencia_vazio() {
         conta.setAgencia("");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_numero_da_agencia_vazio_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José", "123", "");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_agencia_com_letras() {
         conta.setAgencia("456a");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_agencia_com_caracteres_especiais() {
         conta.setAgencia("456%");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
     @Ignore
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_agencia_com_numero_negativo() { // faz sentido esse teste?
         conta.setAgencia("-4567");
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_agencia_com_letras_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José", "123", "456a");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_agencia_com_caracteres_especiais_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José", "123", "456%");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_agencia_com_numero_negativo_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José", "123", "-4567");
-    }
-
     @Test
     public void deve_aceitar_agencia_nao_nula_somente_com_quatro_digitos_numericos() {
-        conta.setAgencia("4567");
-        assertEquals("4567", conta.getAgencia());
+        assertTrue(ValidaBanco.valida(Fixture.from(ContaBancaria.class).gimme("valido")));
     }
 
     @Test
-    public void deve_aceitar_agencia_nao_nula_somente_com_quatro_digitos_numericos_ao_instanciar_novo_objeto() {
-        assertEquals("4567", conta.getAgencia());
-    }
-
-    @Test(expected = IllegalArgumentException.class)
     public void nao_deve_aceitar_agencia_com_menos_de_quatro_digitos() {
         conta.setAgencia("456");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void nao_deve_aceitar_agencia_com_mais_de_quatro_digitos() {
         conta.setAgencia("45678");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_agencia_com_mais_de_quatro_digitos_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José", "123", "45678");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void nao_deve_aceitar_agencia_com_menos_de_quatro_digitos_ao_instanciar_novo_objeto() {
-        new ContaBancaria("José", "123", "456");
+        assertFalse(ValidaBanco.valida(conta));
     }
 
     @Test
@@ -325,17 +219,19 @@ public class ContaBancariaTest {
     @Test
     public void testa_propriedade_simetrica_equals() {
         ContaBancaria conta1 = new ContaBancaria("José", "123", "4567");
-        assertEquals(conta, conta1);
-        assertEquals(conta1, conta);
+        ContaBancaria conta2 = new ContaBancaria("José", "123", "4567");
+        assertEquals(conta1, conta2);
+        assertEquals(conta2, conta1);
     }
 
     @Test
     public void testa_propriedade_transitiva_equals() {
+        ContaBancaria conta0 = new ContaBancaria("José", "123", "4567");
         ContaBancaria conta1 = new ContaBancaria("José", "123", "4567");
         ContaBancaria conta2 = new ContaBancaria("José", "123", "4567");
-        assertEquals(conta, conta1);
+        assertEquals(conta0, conta1);
         assertEquals(conta1, conta2);
-        assertEquals(conta, conta2);
+        assertEquals(conta0, conta2);
     }
 
     @Test
@@ -381,14 +277,16 @@ public class ContaBancariaTest {
 
     @Test
     public void equals_deve_retornar_true_se_numero_e_agencia_iguais_e_titular_diferente() {
+        ContaBancaria conta0 = new ContaBancaria("Jose", "123", "4567");
         ContaBancaria conta1 = new ContaBancaria("Joao", "123", "4567");
-        assertEquals(conta, conta1);
+        assertEquals(conta0, conta1);
     }
 
     @Test
     public void equals_deve_retornar_true_se_numero_agencia_e_titular_iguais() {
+        ContaBancaria conta0 = new ContaBancaria("José", "123", "4567");
         ContaBancaria conta1 = new ContaBancaria("José", "123", "4567");
-        assertEquals(conta, conta1);
+        assertEquals(conta0, conta1);
     }
 
     @Test
@@ -429,14 +327,16 @@ public class ContaBancariaTest {
 
     @Test
     public void hashcode_deve_ser_igual_se_numero_e_agencia_iguais_e_titular_diferente() {
+        ContaBancaria conta0 = new ContaBancaria("José", "123", "4567");
         ContaBancaria conta1 = new ContaBancaria("Joao", "123", "4567");
-        assertEquals(conta.hashCode(), conta1.hashCode());
+        assertEquals(conta0.hashCode(), conta1.hashCode());
     }
 
     @Test
     public void hashcode_deve_ser_igual_se_numero_agencia_e_titular_iguais() {
+        ContaBancaria conta0 = new ContaBancaria("José", "123", "4567");
         ContaBancaria conta1 = new ContaBancaria("José", "123", "4567");
-        assertEquals(conta.hashCode(), conta1.hashCode());
+        assertEquals(conta0.hashCode(), conta1.hashCode());
     }
 
     @Test
