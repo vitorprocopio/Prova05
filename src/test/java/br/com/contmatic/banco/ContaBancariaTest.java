@@ -148,7 +148,7 @@ public class ContaBancariaTest {
 
     @Test
     public void nao_deve_aceitar_agencia_invalido() {
-        conta.getTitular();
+        conta.getAgencia();
         assertFalse(ValidaBanco.valida(Fixture.from(ContaBancaria.class).gimme("agenciaInvalido")));
     }
 

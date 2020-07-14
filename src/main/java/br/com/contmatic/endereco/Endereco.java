@@ -6,12 +6,13 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import br.com.contmatic.enums.Estado;
 
 public class Endereco {
     
-	@Pattern(regexp = "\\d{8}", message = "O CEP deve conter somente 9 digítos numéricos")
+	@Pattern(regexp = "\\d{8}", message = "O CEP deve conter somente 8 digítos numéricos")
 	@NotNull(message = "Não deve conter CEP nulo")
     private String cep;
     
@@ -22,12 +23,14 @@ public class Endereco {
 	@Min(value = 1, message = "O número deve ser maior ou igual a 1")
 	@Max(value = 99999, message = "O número deve ser menor ou igual a 99999")
 	@NotNull(message = "Não deve conter número nulo")
-    private int numero; 
+    private Integer numero; 
     
-	@Pattern(regexp = "^[A-ZÀ-Úa-zà-ú_0-9]{0,1}[A-ZÀ-Ú a-zà-ú_0-9]{0,48}[A-ZÀ-Úa-zà-ú_0-9]{0,1}$", message = "O complemento deve ter até 50 caracteres alfanumericos")
+	@Size(max=50)
+	@Pattern(regexp = "^[A-ZÀ-Úa-zà-ú0-9]{0,1}[A-ZÀ-Ú a-zà-ú_0-9]{0,48}[A-ZÀ-Úa-zà-ú0-9]{0,1}$", message = "O complemento deve ter até 50 caracteres alfanumericos")
     private String complemento;
     
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú_0-9]{0,1}[A-ZÀ-Ú a-zà-ú_0-9]{0,48}[A-ZÀ-Úa-zà-ú_0-9]{0,1}$", message = "O bairro deve ter até 50 caracteres alfanumericos")
+	@Size(max=50)
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú0-9][A-ZÀ-Ú a-zà-ú_0-9]{0,48}[A-ZÀ-Úa-zà-ú0-9]$", message = "O bairro deve ter até 50 caracteres alfanumericos")
 	@NotBlank(message = "Não deve conter bairro nulo")
     private String bairro;
     
@@ -43,7 +46,7 @@ public class Endereco {
 	@NotBlank(message = "Não deve conter país nulo")
     private String pais;
     
-    public Endereco(String cep, String rua, int numero, String complemento, String bairro, String cidade, Estado uf, String pais) {
+    public Endereco(String cep, String rua, Integer numero, String complemento, String bairro, String cidade, Estado uf, String pais) {
         this.setCep(cep);
         this.setRua(rua);
         this.setNumero(numero);
@@ -134,11 +137,11 @@ public class Endereco {
 //         }
 //    }
     
-    public int getNumero() {
+    public Integer getNumero() {
         return numero;
     }
     
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
 //        if(numero < 0 || numero > 99999) {
 //            throw new IllegalArgumentException("O número deve ser de 0 até 99999");
 //        }
@@ -266,7 +269,7 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return "Endereco [cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", complemento=" + complemento + ", bairro=" + bairro + ", cidade=" + cidade + ", uf=" + uf.getNome() + ", pais=" + pais + "]";
+        return "Endereco [cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", complemento=" + complemento + ", bairro=" + bairro + ", cidade=" + cidade + ", uf=" + uf + ", pais=" + pais + "]";
     }
     
 }
