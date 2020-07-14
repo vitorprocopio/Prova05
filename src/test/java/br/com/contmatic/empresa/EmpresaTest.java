@@ -273,19 +273,17 @@ public class EmpresaTest {
 
     @Test
     public void deve_aceitar_razao_social_nao_nulo_de_1_até_100_caracteres() {
-        empresa.getRazaoSocial();
         assertTrue(ValidaEmpresa.valida(empresa));
     }
 
     @Test
     public void nao_deve_aceitar_endereco_nulo() {
-        empresa.setEndereco(null);
+        empresa.setEnderecos(null);
         assertFalse(ValidaEmpresa.valida(empresa));
     }
 
     @Test
     public void deve_aceitar_endereco_nao_nulo_de_acordo_com_as_regras_da_classe_endereco() {
-        empresa.getEndereco();
         assertTrue(ValidaEmpresa.valida(empresa));
     }
 

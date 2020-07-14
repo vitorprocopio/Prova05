@@ -1,5 +1,8 @@
 package br.com.contmatic.empresa;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import br.com.contmatic.endereco.Endereco;
 import br.com.contmatic.enums.Estado;
 import br.com.six2six.fixturefactory.Fixture;
@@ -8,18 +11,21 @@ import br.com.six2six.fixturefactory.loader.TemplateLoader;
 
 public class EmpresaTemplate implements TemplateLoader {
     
+    Set<Endereco> enderecos = new HashSet<>();
     Endereco endereco1 = new Endereco("01234567", "Rua 1 de Abril", 1, "Bloco 1 Apto 102", "Bairro Um", "São Paulo", Estado.SP, "Brasil");
     Endereco endereco2 = new Endereco ("03315000", "Rua Padre Estevão Pernet", 215, null, "Tatuapé", "São Paulo", Estado.SP, "Brasil");
     
     @Override
     public void load() {
+        enderecos.add(endereco1);
+        enderecos.add(endereco2);
         Fixture.of(Empresa.class).addTemplate("valido", new Rule() {
             {
                 add("codigo", random("123", "0009", "99999", "4321", "1", "095", "0000"));
                 add("nomeFantasia", name());
                 add("razaoSocial", name());
                 add("cnpj", cnpj());
-                add("endereco", random(endereco1, endereco2));
+                add("enderecos", enderecos);
 //                add("endereco", one(Endereco.class, "valido"));
             }
         });

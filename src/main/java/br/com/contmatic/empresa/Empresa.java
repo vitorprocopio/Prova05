@@ -1,5 +1,7 @@
 package br.com.contmatic.empresa;
 
+import java.util.Set;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -32,14 +34,14 @@ public class Empresa {
     private String razaoSocial;
     
     @NotNull(message = "Endereço não pode ser nulo")
-    private Endereco endereco;
+    private Set<Endereco> enderecos;
     
-    public Empresa(String codigo, String cnpj, String nomeFantasia, String razaoSocial, Endereco endereco) {
+    public Empresa(String codigo, String cnpj, String nomeFantasia, String razaoSocial, Set<Endereco> enderecos) {
         this.setCodigo(codigo);
         this.setCnpj(cnpj);
         this.setNomeFantasia(nomeFantasia);
         this.setRazaoSocial(razaoSocial);
-        this.setEndereco(endereco);
+        this.setEnderecos(enderecos);
     }
 
     public String getCodigo() {
@@ -134,13 +136,13 @@ public class Empresa {
         this.razaoSocial = razaoSocial;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public Set<Endereco> getEnderecos() {
+        return enderecos;
     }
 
-    public void setEndereco(Endereco endereco) {
+    public void setEnderecos(Set<Endereco> enderecos) {
 //        verificaEnderecoNulo(endereco);
-        this.endereco = endereco;
+        this.enderecos = enderecos;
     }
     
 //    private void verificaEnderecoNulo(Endereco endereco) {
@@ -174,7 +176,7 @@ public class Empresa {
 
     @Override
     public String toString() {
-        return "Empresa [código=" + codigo + ", cnpj=" + cnpj + ", nomeFantasia=" + nomeFantasia + ", razaoSocial=" + razaoSocial + ", endereco=" + endereco + "]";
+        return "Empresa [código=" + codigo + ", cnpj=" + cnpj + ", nomeFantasia=" + nomeFantasia + ", razaoSocial=" + razaoSocial + ", endereco=" + enderecos + "]";
     }
     
 }
