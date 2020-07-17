@@ -1,6 +1,6 @@
 package br.com.contmatic.empresa;
 
-import java.time.LocalDate;
+import java.util.Set;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
@@ -10,7 +10,12 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.hibernate.validator.constraints.br.CPF;
+import org.joda.time.LocalDate;
 
 import br.com.contmatic.annotations.DataApos1900;
 import br.com.contmatic.banco.ContaBancaria;
@@ -49,7 +54,7 @@ public class Funcionario {
     private Genero sexo;
 
     @NotNull(message = "Não deve aceitar endereço nulo")
-    private Endereco endereco;
+    private Set<Endereco> enderecos;
 
     @DecimalMin(value = "0.00", message = "O valor do salário não pode ser negativo")
     @Digits(integer = 5, fraction = 2, message = "O valor do salário está inválido")
@@ -61,7 +66,7 @@ public class Funcionario {
     @NotNull(message = "Não deve aceitar Conta Bancaria nulo")
     private ContaBancaria conta;
 
-    public Funcionario(String codigo, String nome, LocalDate dataNascimento, String nomeMae, String nomePai, String cpf, Genero sexo, double salario, Endereco endereco, ContaBancaria conta,
+    public Funcionario(String codigo, String nome, LocalDate dataNascimento, String nomeMae, String nomePai, String cpf, Genero sexo, double salario, Set<Endereco> enderecos, ContaBancaria conta,
                        Horario horario) {
         this.setCodigo(codigo);
         this.setNome(nome);
@@ -71,7 +76,7 @@ public class Funcionario {
         this.setCpf(cpf);
         this.setSexo(sexo);
         this.setSalario(salario);
-        this.setEndereco(endereco);
+        this.setEnderecos(enderecos);
         this.setConta(conta);
         this.setHorario(horario);
     }
@@ -243,13 +248,13 @@ public class Funcionario {
     // }
     // }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public Set<Endereco> getEnderecos() {
+        return enderecos;
     }
 
-    public void setEndereco(Endereco endereco) {
+    public void setEnderecos(Set<Endereco> enderecos) {
         // verificaEnderecoNulo(endereco);
-        this.endereco = endereco;
+        this.enderecos = enderecos;
     }
 
     // private void verificaEnderecoNulo(Endereco endereco) {
@@ -305,31 +310,24 @@ public class Funcionario {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-        return result;
+        return new HashCodeBuilder().append(this.cpf).build();
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (!(obj instanceof Funcionario)) {
+            return false;
+        }
+        if (this == obj) {
             return true;
-        if (!(obj instanceof Funcionario))
-            return false;
-        Funcionario other = (Funcionario) obj;
-        if (cpf == null) {
-            if (other.cpf != null)
-                return false;
-        } else if (!cpf.equals(other.cpf))
-            return false;
-        return true;
+        }
+        final Funcionario outro = (Funcionario) obj;
+        return new EqualsBuilder().append(this.cpf, outro.cpf).isEquals();
     }
 
     @Override
     public String toString() {
-        return "Funcionario [codigo=" + codigo + ", nome=" + nome + ", dataNascimento=" + dataNascimento + ", nomeMae=" + nomeMae + ", nomePai=" + nomePai + ", cpf=" + cpf + ", sexo=" + sexo +
-            ", endereco=" + endereco + ", salario=" + salario + ", horario=" + horario + ", conta=" + conta + "]";
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
     }
-
+      
 }

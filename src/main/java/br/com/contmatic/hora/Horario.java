@@ -1,20 +1,34 @@
 package br.com.contmatic.hora;
 
-import java.time.LocalTime;
 
 import javax.validation.constraints.NotNull;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import org.joda.time.LocalTime;
+
+import br.com.contmatic.annotations.HorarioEntrada;
+import br.com.contmatic.annotations.HorarioRetornoAlmoco;
+import br.com.contmatic.annotations.HorarioSaida;
+import br.com.contmatic.annotations.HorarioSaidaAlmoco;
+
 public class Horario {
     
+    @HorarioEntrada
 	@NotNull(message = "Não deve conter entrada nula")
     private LocalTime entrada;
     
+    @HorarioSaidaAlmoco
 	@NotNull(message = "Não deve conter saida para o almoço nula")
     private LocalTime saidaAlmoco;
     
+    @HorarioRetornoAlmoco
 	@NotNull(message = "Não deve conter retorno para o almoço nulo")
     private LocalTime retornoAlmoco;
     
+    @HorarioSaida
 	@NotNull(message = "Não deve conter saída nula")
     private LocalTime saida;
     
@@ -95,52 +109,16 @@ public class Horario {
 //        }
 //    }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((entrada == null) ? 0 : entrada.hashCode());
-        result = prime * result + ((retornoAlmoco == null) ? 0 : retornoAlmoco.hashCode());
-        result = prime * result + ((saida == null) ? 0 : saida.hashCode());
-        result = prime * result + ((saidaAlmoco == null) ? 0 : saidaAlmoco.hashCode());
-        return result;
-    }
-
-    @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!(obj instanceof Horario))
-            return false;
-        Horario other = (Horario) obj;
-        if (entrada == null) {
-            if (other.entrada != null)
-                return false;
-        } else if (!entrada.equals(other.entrada))
-            return false;
-        if (retornoAlmoco == null) {
-            if (other.retornoAlmoco != null)
-                return false;
-        } else if (!retornoAlmoco.equals(other.retornoAlmoco))
-            return false;
-        if (saida == null) {
-            if (other.saida != null)
-                return false;
-        } else if (!saida.equals(other.saida))
-            return false;
-        if (saidaAlmoco == null) {
-            if (other.saidaAlmoco != null)
-                return false;
-        } else if (!saidaAlmoco.equals(other.saidaAlmoco))
-            return false;
-        return true;
+        return EqualsBuilder.reflectionEquals(this, obj);
     }
 
-    @Override
-    public String toString() {
-        return "Horario [entrada=" + entrada + ", saidaAlmoco=" + saidaAlmoco + ", retornoAlmoco=" + retornoAlmoco + ", saida=" + saida + "]";
+    public int hashCode() {
+        return HashCodeBuilder.reflectionHashCode(this);
     }
-    
-    
+
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
+    }
 
 }

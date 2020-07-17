@@ -3,6 +3,11 @@ package br.com.contmatic.contato;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class Contato {
     
 	@Pattern(regexp = "\\d{8}", message = "O telefone deve conter somente 8 digítos numéricos")
@@ -107,52 +112,16 @@ public class Contato {
         this.email = email;
     }
     
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((celular == null) ? 0 : celular.hashCode());
-        result = prime * result + ((email == null) ? 0 : email.hashCode());
-        result = prime * result + ((recado == null) ? 0 : recado.hashCode());
-        result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
-        return result;
-    }
-
-    @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!(obj instanceof Contato))
-            return false;
-        Contato other = (Contato) obj;
-        if (celular == null) {
-            if (other.celular != null)
-                return false;
-        } else if (!celular.equals(other.celular))
-            return false;
-        if (email == null) {
-            if (other.email != null)
-                return false;
-        } else if (!email.equals(other.email))
-            return false;
-        if (recado == null) {
-            if (other.recado != null)
-                return false;
-        } else if (!recado.equals(other.recado))
-            return false;
-        if (telefone == null) {
-            if (other.telefone != null)
-                return false;
-        } else if (!telefone.equals(other.telefone))
-            return false;
-        return true;
+        return EqualsBuilder.reflectionEquals(this, obj);
     }
 
-    @Override
-    public String toString() {
-        return "Contato [telefone=" + telefone + ", celular=" + celular + ", recado=" + recado + ", email=" + email + "]";
+    public int hashCode() {
+        return HashCodeBuilder.reflectionHashCode(this);
     }
-    
+
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
+    }
     
 }

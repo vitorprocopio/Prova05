@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="41" failures="0" name="br.com.contmatic.empresa.ClienteTest" time="0.438" errors="0" skipped="0">
+<testsuite tests="41" failures="0" name="br.com.contmatic.empresa.ClienteTest" time="0.457" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Zulu\zulu-8\jre\bin"/>
@@ -28,7 +28,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 10"/>
-    <property name="classworlds.conf" value="C:\Users\vitor.nunes\Documents\prova03\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf327244779307693962.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\vitor.nunes\Documents\prova03\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf6097597108584646778.tmp"/>
     <property name="jansi.force" value="true"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files\Zulu\zulu-8\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_241/bin/server;C:/Program Files/Java/jre1.8.0_241/bin;C:/Program Files/Java/jre1.8.0_241/lib/amd64;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\bruno.rocha\Documents\Tools\apache-maven-3.6.3\bin;C:\Program Files (x86)\Inno Setup 6;C:\Program Files (x86)\sbt\bin;C:\Program Files\Git\cmd;C:\Program Files\Zulu\zulu-8\bin\;C:\Program Files\Zulu\zulu-7\bin\;C:\Users\vitor.nunes\AppData\Local\Microsoft\WindowsApps;C:\Users\vitor.nunes\AppData\Local\GitHubDesktop\bin;C:\Users\vitor.nunes\Downloads\sts-4.6.0.RELEASE;;."/>
@@ -65,45 +65,45 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="deve_aceitar_codigo_nao_nulo_com_ate_5_digitos_numericos" time="0.045"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="deve_aceitar_contato_nao_nulo_de_acordo_com_as_regras_da_classe_contato" time="0.012"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="deve_aceitar_codigo_nao_nulo_com_ate_5_digitos_numericos" time="0.047"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="deve_aceitar_contato_nao_nulo_de_acordo_com_as_regras_da_classe_contato" time="0.011"/>
   <testcase classname="br.com.contmatic.empresa.ClienteTest" name="deve_aceitar_cpf_valido_somente_com_11_digitos_numericos" time="0.011"/>
   <testcase classname="br.com.contmatic.empresa.ClienteTest" name="deve_aceitar_data_nascimento_nao_nula_a_partir_de_01_01_1900_ate_data_ontem" time="0.011"/>
   <testcase classname="br.com.contmatic.empresa.ClienteTest" name="deve_aceitar_endereco_nao_nulo_de_acordo_com_as_regras_da_classe_endereco" time="0.01"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="deve_aceitar_nome_nao_nulo_somente_com_letras_e_espacos_de_1_até_100_caracteres" time="0.01"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_codigo_com_caracteres_especiais" time="0.009"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_codigo_com_espacos" time="0.01"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_codigo_com_letras" time="0.009"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_codigo_com_mais_de_cinco_digitos" time="0.008"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_codigo_em_branco" time="0.01"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_codigo_invalido" time="0.009"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="deve_aceitar_nome_nao_nulo_somente_com_letras_e_espacos_de_1_até_100_caracteres" time="0.011"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_codigo_com_caracteres_especiais" time="0.01"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_codigo_com_espacos" time="0.011"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_codigo_com_letras" time="0.008"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_codigo_com_mais_de_cinco_digitos" time="0.009"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_codigo_em_branco" time="0.008"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_codigo_invalido" time="0.011"/>
   <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_codigo_nulo" time="0.008"/>
   <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_codigo_vazio" time="0.008"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_contato_nulo" time="0.007"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_com_caracteres_especiais" time="0.022"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_contato_nulo" time="0.008"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_com_caracteres_especiais" time="0.02"/>
   <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_com_decimo_digito_invalido" time="0.008"/>
   <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_com_decimo_primeiro_digito_invalido" time="0.008"/>
   <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_com_espacos" time="0.008"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_com_letras" time="0.007"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_com_mais_de_onze_digitos" time="0.008"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_com_menos_de_onze_digitos" time="0.008"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_com_todos_os_digitos_repetidos" time="0.068"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_invalido" time="0.01"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_nulo" time="0.006"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_com_letras" time="0.008"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_com_mais_de_onze_digitos" time="0.009"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_com_menos_de_onze_digitos" time="0.007"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_com_todos_os_digitos_repetidos" time="0.063"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_invalido" time="0.008"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_cpf_nulo" time="0.007"/>
   <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_data_nascimento_anterior_a_01_01_1900" time="0.007"/>
   <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_data_nascimento_invalida" time="0.007"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_data_nascimento_nula" time="0.007"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_data_nascimento_nula" time="0.006"/>
   <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_data_nascimento_posterior_ou_igual_a_data_atual" time="0.007"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_endereco_nulo" time="0.004"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_espaco_no_comeco_do_nome" time="0.007"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_espaco_no_final_do_nome" time="0.008"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_nome_com_caracteres_especiais" time="0.007"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_nome_com_numeros" time="0.006"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_nome_em_branco" time="0.007"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_endereco_nulo" time="0.006"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_espaco_no_comeco_do_nome" time="0.01"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_espaco_no_final_do_nome" time="0.01"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_nome_com_caracteres_especiais" time="0.01"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_nome_com_numeros" time="0.01"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_nome_em_branco" time="0.009"/>
   <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_nome_invalido" time="0.007"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_nome_maior_que_cem_caracteres" time="0.006"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_nome_nulo" time="0.009"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_nome_maior_que_cem_caracteres" time="0.01"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_nome_nulo" time="0.01"/>
   <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_nome_vazio" time="0.007"/>
   <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_numero_do_cpf_em_branco" time="0.006"/>
-  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_numero_do_cpf_vazio" time="0.006"/>
+  <testcase classname="br.com.contmatic.empresa.ClienteTest" name="nao_deve_aceitar_numero_do_cpf_vazio" time="0.007"/>
 </testsuite>

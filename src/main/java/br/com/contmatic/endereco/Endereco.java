@@ -8,6 +8,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import br.com.contmatic.enums.Estado;
 
 public class Endereco {
@@ -240,36 +245,24 @@ public class Endereco {
     
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((cep == null) ? 0 : cep.hashCode());
-        result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
-        return result;
+        return new HashCodeBuilder().append(this.cep).append(this.cidade).build();
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (!(obj instanceof Endereco)) {
+            return false;
+        }
+        if (this == obj) {
             return true;
-        if (!(obj instanceof Endereco))
-            return false;
-        Endereco other = (Endereco) obj;
-        if (cep == null) {
-            if (other.cep != null)
-                return false;
-        } else if (!cep.equals(other.cep))
-            return false;
-        if (cidade == null) {
-            if (other.cidade != null)
-                return false;
-        } else if (!cidade.equals(other.cidade))
-            return false;
-        return true;
+        }
+        final Endereco outro = (Endereco) obj;
+        return new EqualsBuilder().append(this.cep, outro.cep).append(this.cidade, outro.cidade).isEquals();
     }
 
     @Override
     public String toString() {
-        return "Endereco [cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", complemento=" + complemento + ", bairro=" + bairro + ", cidade=" + cidade + ", uf=" + uf + ", pais=" + pais + "]";
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
     }
     
 }

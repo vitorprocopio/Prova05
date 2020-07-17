@@ -3,8 +3,7 @@ package br.com.contmatic.empresa;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.time.LocalDate;
-
+import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -251,7 +250,7 @@ public class ClienteTest {
     
     @Test
     public void nao_deve_aceitar_data_nascimento_anterior_a_01_01_1900() {
-        cliente.setDataNascimento(LocalDate.of(1899, 12, 31));
+        cliente.setDataNascimento(new LocalDate(1899, 12, 31));
         assertFalse(ValidaCliente.valida(cliente));
     }
 
@@ -268,7 +267,7 @@ public class ClienteTest {
 
     @Test
     public void nao_deve_aceitar_endereco_nulo() {
-        cliente.setEndereco(null);
+        cliente.setEnderecos(null);
         assertFalse(ValidaCliente.valida(cliente));
     }
 
@@ -279,7 +278,7 @@ public class ClienteTest {
 
     @Test
     public void nao_deve_aceitar_contato_nulo() {
-        cliente.setContato(null);
+        cliente.setContatos(null);
         assertFalse(ValidaCliente.valida(cliente));
     }
 

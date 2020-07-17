@@ -3,8 +3,7 @@ package br.com.contmatic.empresa;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.time.LocalDate;
-
+import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -350,7 +349,7 @@ public class FuncionarioTest {
 
     @Test
     public void nao_deve_aceitar_data_nascimento_anterior_a_01_01_1900() {
-        funcionario.setDataNascimento(LocalDate.of(1899, 12, 31));
+        funcionario.setDataNascimento(new LocalDate(1899, 12, 31));
         assertFalse(ValidaFuncionario.valida(funcionario));
     }
 
@@ -367,7 +366,7 @@ public class FuncionarioTest {
 
     @Test
     public void nao_deve_aceitar_endereco_nulo() {
-        funcionario.setEndereco(null);
+        funcionario.setEnderecos(null);
         assertFalse(ValidaFuncionario.valida(funcionario));
     }
 
@@ -383,7 +382,7 @@ public class FuncionarioTest {
     }
 
     @Test
-    public void deve_aceitar_Sexo_nao_nulo_com_a_letra_F_ou_M_ou_O() {
+    public void deve_aceitar_Sexo_nao_nulo_de_acordo_com_enum_genero() {
         assertTrue(ValidaFuncionario.valida(funcionario));
     }
     

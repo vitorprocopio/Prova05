@@ -3,6 +3,11 @@ package br.com.contmatic.banco;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class ContaBancaria {
     
 	@Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Titular inválido")
@@ -116,36 +121,24 @@ public class ContaBancaria {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((agencia == null) ? 0 : agencia.hashCode());
-        result = prime * result + ((numero == null) ? 0 : numero.hashCode());
-        return result;
+        return new HashCodeBuilder().append(this.agencia).append(numero).build();
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (!(obj instanceof ContaBancaria)) {
+            return false;
+        }
+        if (this == obj) {
             return true;
-        if (!(obj instanceof ContaBancaria))
-            return false;
-        ContaBancaria other = (ContaBancaria) obj;
-        if (agencia == null) {
-            if (other.agencia != null)
-                return false;
-        } else if (!agencia.equals(other.agencia))
-            return false;
-        if (numero == null) {
-            if (other.numero != null)
-                return false;
-        } else if (!numero.equals(other.numero))
-            return false;
-        return true;
+        }
+        final ContaBancaria outro = (ContaBancaria) obj;
+        return new EqualsBuilder().append(this.agencia, outro.agencia).append(this.numero, outro.numero).isEquals();
     }
 
     @Override
     public String toString() {
-        return "ContaBancaria [titular=" + titular + ", numero=" + numero + ", agencia=" + agencia + "]";
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
     }
-
+    
 }
