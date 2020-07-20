@@ -9,10 +9,18 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EmpresaTemplate.
+ */
 public class EmpresaTemplate implements TemplateLoader {
 
+    /** The enderecos. */
     Set<Endereco> enderecos = new HashSet<>();
 
+    /**
+     * Load.
+     */
     @Override
     public void load() {
 

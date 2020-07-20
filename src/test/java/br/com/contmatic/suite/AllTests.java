@@ -16,12 +16,19 @@ import br.com.contmatic.empresa.FuncionarioTest;
 import br.com.contmatic.endereco.EnderecoTest;
 import br.com.contmatic.hora.HorarioTest;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AllTests.
+ */
 @RunWith(Suite.class)
 @SuiteClasses({ContaBancariaTest.class, ContatoTest.class, EnderecoTest.class, ClienteTest.class, EmpresaTest.class, FuncionarioTest.class, HorarioTest.class})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
 public class AllTests {
     
+    /**
+     * Inicio dos testes.
+     */
     @BeforeClass
     public static void inicio_dos_testes() {
         System.out.println("-----------------------------");
@@ -29,6 +36,9 @@ public class AllTests {
         System.out.println("-----------------------------");
     }
     
+    /**
+     * Fim dos testes.
+     */
     @AfterClass
     public static void fim_dos_testes() {
         System.out.println("-----------------------");

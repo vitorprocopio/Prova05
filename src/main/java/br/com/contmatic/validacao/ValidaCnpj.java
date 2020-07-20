@@ -1,7 +1,17 @@
 package br.com.contmatic.validacao;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ValidaCnpj.
+ */
 public class ValidaCnpj {
 
+    /**
+     * Valida cnpj.
+     *
+     * @param cnpj the cnpj
+     * @return the string
+     */
     public static String validaCnpj(String cnpj) {
 
         int[] cnpjLista = new int[14];

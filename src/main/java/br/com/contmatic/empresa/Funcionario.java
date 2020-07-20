@@ -23,49 +23,79 @@ import br.com.contmatic.endereco.Endereco;
 import br.com.contmatic.enums.Genero;
 import br.com.contmatic.hora.Horario;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Funcionario.
+ */
 public class Funcionario {
 
+    /** The codigo. */
     @NotEmpty(message = "Não deve aceitar código nulo nem vazio")
     @Pattern(regexp = "\\d{0,5}", message = "Código inválido")
     private String codigo;
 
+    /** The nome. */
     @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome inválido")
     @NotBlank(message = "Não deve aceitar nome nulo nem vazio")
     private String nome;
 
+    /** The data nascimento. */
     @Past(message = "A data de nascimento deve ser anterior a data atual")
     @NotNull(message = "A data de nascimento não deve ser nula")
     @DataApos1900
     private LocalDate dataNascimento;
 
+    /** The nome mae. */
     @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome mãe inválido")
     @NotBlank(message = "Não deve aceitar nome da mãe nulo nem vazio")
     private String nomeMae;
 
+    /** The nome pai. */
     @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome pai inválido")
     @NotBlank(message = "Não deve aceitar nome do pai nulo nem vazio")
     private String nomePai;
 
+    /** The cpf. */
     @CPF
     @NotNull(message = "Não deve aceitar cpf nulo")
     private String cpf;
 
+    /** The sexo. */
     @NotNull(message = "Não deve aceitar sexo nulo")
     private Genero sexo;
 
+    /** The enderecos. */
     @NotNull(message = "Não deve aceitar endereço nulo")
     private Set<Endereco> enderecos;
 
+    /** The salario. */
     @DecimalMin(value = "0.00", message = "O valor do salário não pode ser negativo")
     @Digits(integer = 5, fraction = 2, message = "O valor do salário está inválido")
     private double salario;
 
+    /** The horario. */
     @NotNull(message = "Não deve aceitar horário nulo")
     private Horario horario;
 
+    /** The conta. */
     @NotNull(message = "Não deve aceitar Conta Bancaria nulo")
     private ContaBancaria conta;
 
+    /**
+     * Instantiates a new funcionario.
+     *
+     * @param codigo the codigo
+     * @param nome the nome
+     * @param dataNascimento the data nascimento
+     * @param nomeMae the nome mae
+     * @param nomePai the nome pai
+     * @param cpf the cpf
+     * @param sexo the sexo
+     * @param salario the salario
+     * @param enderecos the enderecos
+     * @param conta the conta
+     * @param horario the horario
+     */
     public Funcionario(String codigo, String nome, LocalDate dataNascimento, String nomeMae, String nomePai, String cpf, Genero sexo, double salario, Set<Endereco> enderecos, ContaBancaria conta,
                        Horario horario) {
         this.setCodigo(codigo);
@@ -81,10 +111,20 @@ public class Funcionario {
         this.setHorario(horario);
     }
 
+    /**
+     * Gets the codigo.
+     *
+     * @return the codigo
+     */
     public String getCodigo() {
         return codigo;
     }
 
+    /**
+     * Sets the codigo.
+     *
+     * @param codigo the new codigo
+     */
     public void setCodigo(String codigo) {
         // verificaCampoNulo(codigo);
         // verificaTamanhoMenorQue6(codigo);
@@ -119,10 +159,20 @@ public class Funcionario {
     // }
     // }
 
+    /**
+     * Gets the nome.
+     *
+     * @return the nome
+     */
     public String getNome() {
         return nome;
     }
 
+    /**
+     * Sets the nome.
+     *
+     * @param nome the new nome
+     */
     public void setNome(String nome) {
         // verificaCampoNulo(nome);
         // verificaCampoVazio(nome);
@@ -151,11 +201,21 @@ public class Funcionario {
     // throw new IllegalArgumentException("O campo deve ter até 100 caracteres");
     // }
     // }
+    /**
+     * Gets the data nascimento.
+     *
+     * @return the data nascimento
+     */
     //
     public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
+    /**
+     * Sets the data nascimento.
+     *
+     * @param dataNascimento the new data nascimento
+     */
     public void setDataNascimento(LocalDate dataNascimento) {
         // verificaDataNula(dataNascimento);
         // verificaDataNascimento(dataNascimento);
@@ -174,10 +234,20 @@ public class Funcionario {
     // }
     // }
 
+    /**
+     * Gets the nome mae.
+     *
+     * @return the nome mae
+     */
     public String getNomeMae() {
         return nomeMae;
     }
 
+    /**
+     * Sets the nome mae.
+     *
+     * @param nomeMae the new nome mae
+     */
     public void setNomeMae(String nomeMae) {
         // verificaCampoNulo(nomeMae);
         // verificaCampoVazio(nomeMae);
@@ -187,10 +257,20 @@ public class Funcionario {
         this.nomeMae = nomeMae;
     }
 
+    /**
+     * Gets the nome pai.
+     *
+     * @return the nome pai
+     */
     public String getNomePai() {
         return nomePai;
     }
 
+    /**
+     * Sets the nome pai.
+     *
+     * @param nomePai the new nome pai
+     */
     public void setNomePai(String nomePai) {
         // verificaEspacoInicio(nomePai);
         // verificaContemSomenteLetras(nomePai);
@@ -198,10 +278,20 @@ public class Funcionario {
         this.nomePai = nomePai;
     }
 
+    /**
+     * Gets the cpf.
+     *
+     * @return the cpf
+     */
     public String getCpf() {
         return cpf;
     }
 
+    /**
+     * Sets the cpf.
+     *
+     * @param cpf the new cpf
+     */
     public void setCpf(String cpf) {
         // verificaCampoNulo(cpf);
         // verificaTamanhoCpf(cpf);
@@ -224,10 +314,20 @@ public class Funcionario {
     // }
     // }
 
+    /**
+     * Gets the sexo.
+     *
+     * @return the sexo
+     */
     public Genero getSexo() {
         return sexo;
     }
 
+    /**
+     * Sets the sexo.
+     *
+     * @param sexo the new sexo
+     */
     public void setSexo(Genero sexo) {
         // verificaCampoNulo(sexo);
         // verificaTamanhoIgualUm(sexo);
@@ -248,10 +348,20 @@ public class Funcionario {
     // }
     // }
 
+    /**
+     * Gets the enderecos.
+     *
+     * @return the enderecos
+     */
     public Set<Endereco> getEnderecos() {
         return enderecos;
     }
 
+    /**
+     * Sets the enderecos.
+     *
+     * @param enderecos the new enderecos
+     */
     public void setEnderecos(Set<Endereco> enderecos) {
         // verificaEnderecoNulo(endereco);
         this.enderecos = enderecos;
@@ -263,10 +373,20 @@ public class Funcionario {
     // }
     // }
 
+    /**
+     * Gets the salario.
+     *
+     * @return the salario
+     */
     public double getSalario() {
         return salario;
     }
 
+    /**
+     * Sets the salario.
+     *
+     * @param salario the new salario
+     */
     public void setSalario(double salario) {
         // verificaSalario(salario);
         this.salario = salario;
@@ -278,10 +398,20 @@ public class Funcionario {
     // }
     // }
 
+    /**
+     * Gets the horario.
+     *
+     * @return the horario
+     */
     public Horario getHorario() {
         return horario;
     }
 
+    /**
+     * Sets the horario.
+     *
+     * @param horario the new horario
+     */
     public void setHorario(Horario horario) {
         // verificaHorarioNulo(horario);
         this.horario = horario;
@@ -293,10 +423,20 @@ public class Funcionario {
     // }
     // }
 
+    /**
+     * Gets the conta.
+     *
+     * @return the conta
+     */
     public ContaBancaria getConta() {
         return conta;
     }
 
+    /**
+     * Sets the conta.
+     *
+     * @param conta the new conta
+     */
     public void setConta(ContaBancaria conta) {
         // verificaContaNulo(conta);
         this.conta = conta;
@@ -308,11 +448,22 @@ public class Funcionario {
     // }
     // }
 
+    /**
+     * Hash code.
+     *
+     * @return the int
+     */
     @Override
     public int hashCode() {
         return new HashCodeBuilder().append(this.cpf).build();
     }
 
+    /**
+     * Equals.
+     *
+     * @param obj the obj
+     * @return true, if successful
+     */
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Funcionario)) {
@@ -325,6 +476,11 @@ public class Funcionario {
         return new EqualsBuilder().append(this.cpf, outro.cpf).isEquals();
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);

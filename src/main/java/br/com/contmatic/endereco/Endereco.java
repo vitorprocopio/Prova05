@@ -15,42 +15,66 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import br.com.contmatic.enums.Estado;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Endereco.
+ */
 public class Endereco {
     
+	/** The cep. */
 	@Pattern(regexp = "\\d{8}", message = "O CEP deve conter somente 8 digítos numéricos")
 	@NotNull(message = "Não deve conter CEP nulo")
     private String cep;
     
+	/** The rua. */
 	@Pattern(regexp = "^[A-ZÀ-Úa-zà-ú_0-9][A-ZÀ-Ú a-zà-ú_0-9]{0,98}[A-ZÀ-Úa-zà-ú_0-9]$", message = "A rua deve ter até 100 caracteres alfanuméricos")
     @NotBlank(message = "Não deve aceitar rua nulo nem vazio")
     private String rua;
     
+	/** The numero. */
 	@Min(value = 1, message = "O número deve ser maior ou igual a 1")
 	@Max(value = 99999, message = "O número deve ser menor ou igual a 99999")
 	@NotNull(message = "Não deve conter número nulo")
     private Integer numero; 
     
+	/** The complemento. */
 	@Size(max=50)
 	@Pattern(regexp = "^[A-ZÀ-Úa-zà-ú0-9]{0,1}[A-ZÀ-Ú a-zà-ú_0-9]{0,48}[A-ZÀ-Úa-zà-ú0-9]{0,1}$", message = "O complemento deve ter até 50 caracteres alfanumericos")
     private String complemento;
     
+	/** The bairro. */
 	@Size(max=50)
     @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú0-9][A-ZÀ-Ú a-zà-ú_0-9]{0,48}[A-ZÀ-Úa-zà-ú0-9]$", message = "O bairro deve ter até 50 caracteres alfanumericos")
 	@NotBlank(message = "Não deve conter bairro nulo")
     private String bairro;
     
+    /** The cidade. */
     @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú][A-ZÀ-Ú a-zà-ú]{0,48}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "A cidade deve ter até 50 caracteres alfanumericos")
 	@NotBlank(message = "Não deve conter cidade nula nem vazia")
     private String cidade;
     
+    /** The uf. */
     @Valid
 	@NotNull(message = "Não deve conter UF nulo")
     private Estado uf;
     
+	/** The pais. */
 	@Pattern(regexp = "^[A-ZÀ-Úa-zà-ú][A-ZÀ-Ú a-zà-ú]{0,48}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "O país deve ter até 50 caracteres alfanumericos")
 	@NotBlank(message = "Não deve conter país nulo")
     private String pais;
     
+    /**
+     * Instantiates a new endereco.
+     *
+     * @param cep the cep
+     * @param rua the rua
+     * @param numero the numero
+     * @param complemento the complemento
+     * @param bairro the bairro
+     * @param cidade the cidade
+     * @param uf the uf
+     * @param pais the pais
+     */
     public Endereco(String cep, String rua, Integer numero, String complemento, String bairro, String cidade, Estado uf, String pais) {
         this.setCep(cep);
         this.setRua(rua);
@@ -62,10 +86,20 @@ public class Endereco {
         this.setPais(pais);
     }
     
+    /**
+     * Gets the cep.
+     *
+     * @return the cep
+     */
     public String getCep() {
         return cep;
     }
     
+    /**
+     * Sets the cep.
+     *
+     * @param cep the new cep
+     */
     public void setCep(String cep) {
 //        verificaCampoNulo(cep);
 //        verificaCampoVazio(cep);
@@ -117,10 +151,20 @@ public class Endereco {
 //        }
 //    }
     
-    public String getRua() {
+    /**
+ * Gets the rua.
+ *
+ * @return the rua
+ */
+public String getRua() {
         return rua;
     }
     
+    /**
+     * Sets the rua.
+     *
+     * @param rua the new rua
+     */
     public void setRua(String rua) {
 //        verificaCampoNulo(rua);
 //        verificaCampoVazio(rua);
@@ -142,10 +186,20 @@ public class Endereco {
 //         }
 //    }
     
-    public Integer getNumero() {
+    /**
+ * Gets the numero.
+ *
+ * @return the numero
+ */
+public Integer getNumero() {
         return numero;
     }
     
+    /**
+     * Sets the numero.
+     *
+     * @param numero the new numero
+     */
     public void setNumero(Integer numero) {
 //        if(numero < 0 || numero > 99999) {
 //            throw new IllegalArgumentException("O número deve ser de 0 até 99999");
@@ -153,10 +207,20 @@ public class Endereco {
         this.numero = numero;
     }
     
+    /**
+     * Gets the complemento.
+     *
+     * @return the complemento
+     */
     public String getComplemento() {
         return complemento;
     }
     
+    /**
+     * Sets the complemento.
+     *
+     * @param complemento the new complemento
+     */
     public void setComplemento(String complemento) {
 //        if(complemento != null) {
 //        verificaTamanhoAteCinquenta(complemento);
@@ -169,12 +233,22 @@ public class Endereco {
 //            throw new IllegalArgumentException("O campo deve conter até 100 caracteres"); 
 //        }
 //    }
+/**
+ * Gets the bairro.
+ *
+ * @return the bairro
+ */
 //    
     public String getBairro() {
         return bairro;
     }
     
     
+    /**
+     * Sets the bairro.
+     *
+     * @param bairro the new bairro
+     */
     public void setBairro(String bairro) {
 //        verificaCampoNulo(bairro);
 //        verificaCampoVazio(bairro);
@@ -184,10 +258,20 @@ public class Endereco {
         this.bairro = bairro;
     }
     
+    /**
+     * Gets the cidade.
+     *
+     * @return the cidade
+     */
     public String getCidade() {
         return cidade;
     }
     
+    /**
+     * Sets the cidade.
+     *
+     * @param cidade the new cidade
+     */
     public void setCidade(String cidade) {
 //        verificaCampoNulo(cidade);
 //        verificaCampoVazio(cidade);
@@ -197,10 +281,20 @@ public class Endereco {
         this.cidade = cidade;
     }
     
+    /**
+     * Gets the uf.
+     *
+     * @return the uf
+     */
     public Estado getUf() {
         return uf;
     }
     
+    /**
+     * Sets the uf.
+     *
+     * @param uf the new uf
+     */
     public void setUf(Estado uf) {
 //        verificaCampoNulo(uf);        
 //        verificaContemSomenteLetras(uf);
@@ -222,10 +316,20 @@ public class Endereco {
 //         }
 //    }
     
-    public String getPais() {
+    /**
+ * Gets the pais.
+ *
+ * @return the pais
+ */
+public String getPais() {
         return pais;
     }
     
+    /**
+     * Sets the pais.
+     *
+     * @param pais the new pais
+     */
     public void setPais(String pais) {
 //        verificaCampoNulo(pais);   
 //        verificaCampoVazio(pais);
@@ -243,11 +347,22 @@ public class Endereco {
 //        }
 //    }
     
-    @Override
+    /**
+ * Hash code.
+ *
+ * @return the int
+ */
+@Override
     public int hashCode() {
         return new HashCodeBuilder().append(this.cep).append(this.cidade).build();
     }
 
+    /**
+     * Equals.
+     *
+     * @param obj the obj
+     * @return true, if successful
+     */
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Endereco)) {
@@ -260,6 +375,11 @@ public class Endereco {
         return new EqualsBuilder().append(this.cep, outro.cep).append(this.cidade, outro.cidade).isEquals();
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);

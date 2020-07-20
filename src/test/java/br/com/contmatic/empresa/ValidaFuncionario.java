@@ -7,8 +7,19 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ValidaFuncionario.
+ */
 public class ValidaFuncionario {
     
+    /**
+     * Procura erro.
+     *
+     * @param funcionario the funcionario
+     * @param mensagemProcurada the mensagem procurada
+     * @return true, if successful
+     */
     public static boolean ProcuraErro(Funcionario funcionario, String mensagemProcurada) {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
@@ -22,6 +33,12 @@ public class ValidaFuncionario {
         return true;
     }
 
+    /**
+     * Valida.
+     *
+     * @param funcionario the funcionario
+     * @return true, if successful
+     */
     public static boolean valida(Funcionario funcionario) {
         System.out.println(funcionario);
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();

@@ -8,20 +8,36 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Contato.
+ */
 public class Contato {
     
+	/** The telefone. */
 	@Pattern(regexp = "\\d{8}", message = "O telefone deve conter somente 8 digítos numéricos")
     private String telefone;
     
+	/** The celular. */
 	@Pattern(regexp = "\\d{9}", message = "O celular deve conter somente 9 digítos numéricos")
 	private String celular;
     
+	/** The recado. */
 	@Pattern(regexp = "\\d{8,9}", message = "O número para contato deve conter somente 8 ou 9 digítos numéricos")
     private String recado;
     
+    /** The email. */
     @Email(message = "O endereço de email é inválido")
     private String email;
     
+    /**
+     * Instantiates a new contato.
+     *
+     * @param telefone the telefone
+     * @param celular the celular
+     * @param recado the recado
+     * @param email the email
+     */
     public Contato(String telefone, String celular, String recado, String email) {
         this.setTelefone(telefone);
         this.setCelular(celular);
@@ -29,10 +45,20 @@ public class Contato {
         this.setEmail(email);
     }
 
+    /**
+     * Gets the telefone.
+     *
+     * @return the telefone
+     */
     public String getTelefone() {
         return telefone;
     }
 
+    /**
+     * Sets the telefone.
+     *
+     * @param telefone the new telefone
+     */
     public void setTelefone(String telefone) {
 //        if(telefone != null) {
 //        verificaTamanhoTelefone(telefone);
@@ -54,10 +80,20 @@ public class Contato {
 //           throw new IllegalArgumentException("O número deve conter 8 dígitos"); 
 //        }
         
-    public String getCelular() {
+    /**
+ * Gets the celular.
+ *
+ * @return the celular
+ */
+public String getCelular() {
         return celular;
     }
 
+    /**
+     * Sets the celular.
+     *
+     * @param celular the new celular
+     */
     public void setCelular(String celular) {
 //        if(celular != null) {
 //        verificaTamanhoCelular(celular);
@@ -72,10 +108,20 @@ public class Contato {
         this.celular = celular;
     }
 
+    /**
+     * Gets the recado.
+     *
+     * @return the recado
+     */
     public String getRecado() {
         return recado;
     }
 
+    /**
+     * Sets the recado.
+     *
+     * @param recado the new recado
+     */
     public void setRecado(String recado) {
 //        if(recado != null) {
 //        verificaTamanhoRecado(recado);
@@ -90,10 +136,20 @@ public class Contato {
         this.recado = recado;
     }
 
+    /**
+     * Gets the email.
+     *
+     * @return the email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Sets the email.
+     *
+     * @param email the new email
+     */
     public void setEmail(String email) {
 //        if(email != null) {
 //        verificaTamanhoEmail(email);
@@ -112,14 +168,30 @@ public class Contato {
         this.email = email;
     }
     
+    /**
+     * Equals.
+     *
+     * @param obj the obj
+     * @return true, if successful
+     */
     public boolean equals(Object obj) {
         return EqualsBuilder.reflectionEquals(this, obj);
     }
 
+    /**
+     * Hash code.
+     *
+     * @return the int
+     */
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
     }

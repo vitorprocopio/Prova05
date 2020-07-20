@@ -4,8 +4,15 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BancoTemplate.
+ */
 public class BancoTemplate implements TemplateLoader {
 
+    /**
+     * Load.
+     */
     @Override
     public void load() {
         Fixture.of(ContaBancaria.class).addTemplate("valido", new Rule() {

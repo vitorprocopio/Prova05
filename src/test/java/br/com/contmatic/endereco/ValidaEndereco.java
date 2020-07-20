@@ -7,8 +7,19 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ValidaEndereco.
+ */
 public class ValidaEndereco {
     
+    /**
+     * Procura erro.
+     *
+     * @param endereco the endereco
+     * @param mensagemProcurada the mensagem procurada
+     * @return true, if successful
+     */
     public static boolean ProcuraErro(Endereco endereco, String mensagemProcurada) {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
@@ -22,6 +33,12 @@ public class ValidaEndereco {
         return true;
     }
 
+    /**
+     * Valida.
+     *
+     * @param endereco the endereco
+     * @return true, if successful
+     */
     public static boolean valida(Endereco endereco) {
         System.out.println(endereco);
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();

@@ -1,7 +1,17 @@
 package br.com.contmatic.validacao;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ValidaCpf.
+ */
 public class ValidaCpf {
     
+    /**
+     * Valida cpf.
+     *
+     * @param cpf the cpf
+     * @return the string
+     */
     public static String validaCpf(String cpf) {
         
     int[] cpfLista = new int[11];

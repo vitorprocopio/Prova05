@@ -13,12 +13,21 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ClienteTemplate.
+ */
 public class ClienteTemplate implements TemplateLoader {
 
+    /** The contatos. */
     Set<Contato> contatos = new HashSet<>();
 
+    /** The enderecos. */
     Set<Endereco> enderecos = new HashSet<>();
 
+    /**
+     * Load.
+     */
     @Override
     public void load() {
         new EnderecoTemplate().load();

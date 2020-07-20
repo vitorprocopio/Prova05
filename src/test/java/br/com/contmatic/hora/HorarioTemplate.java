@@ -6,8 +6,15 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HorarioTemplate.
+ */
 public class HorarioTemplate implements TemplateLoader {
 
+    /**
+     * Load.
+     */
     @Override
     public void load() {
         Fixture.of(Horario.class).addTemplate("valido", new Rule() {

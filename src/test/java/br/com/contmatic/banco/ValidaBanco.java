@@ -7,8 +7,19 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ValidaBanco.
+ */
 public class ValidaBanco {
 
+    /**
+     * Procura erro.
+     *
+     * @param conta the conta
+     * @param mensagemProcurada the mensagem procurada
+     * @return true, if successful
+     */
     public static boolean ProcuraErro(ContaBancaria conta, String mensagemProcurada) {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
@@ -22,6 +33,12 @@ public class ValidaBanco {
         return true;
     }
 
+    /**
+     * Valida.
+     *
+     * @param conta the conta
+     * @return true, if successful
+     */
     public static boolean valida(ContaBancaria conta) {
         System.out.println(conta);
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
