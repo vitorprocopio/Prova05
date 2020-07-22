@@ -36,7 +36,6 @@ public class EmpresaTemplate implements TemplateLoader {
                 add("razaoSocial", name());
                 add("cnpj", cnpj());
                 add("enderecos", enderecos);
-                // add("endereco", one(Endereco.class, "valido"));
             }
         });
         Fixture.of(Empresa.class).addTemplate("codigoInvalido").inherits("valido", new Rule() {

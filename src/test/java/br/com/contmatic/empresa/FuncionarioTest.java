@@ -22,23 +22,6 @@ public class FuncionarioTest {
 
     /** The funcionario. */
     private Funcionario funcionario;
-    // private LocalDate data;
-    // private Endereco endereco;
-    // private ContaBancaria conta;
-    // private Horario horario;
-    // private LocalTime entrada = LocalTime.of(8, 00, 00);
-    // private LocalTime saidaAlmoco = LocalTime.of(12, 30, 00);
-    // private LocalTime retornoAlmoco = LocalTime.of(13, 30, 00);
-    // private LocalTime saida = LocalTime.of(18, 00, 00);
-
-    // @Before
-    // public void init() {
-    // horario = new Horario(entrada, saidaAlmoco, retornoAlmoco, saida);
-    // conta = new ContaBancaria("Joana Pereira","321","7654");
-    // endereco = new Endereco("01234567", "Rua 1 de Abril", 1, "Bloco 1 Apto 102", "Bairro Um", "São Paulo", Estado.SP, "Brasil");
-    // data = LocalDate.of(1986,01,06);
-    // funcionario = new Funcionario("54", "Joana Pereira", data, "Francisca Pereira", "Antonio Pereira", "12345678909", Genero.F, 3500.77, endereco, conta);
-    // }
 
     /**
      * Load.
@@ -561,7 +544,7 @@ public class FuncionarioTest {
     public void deve_aceitar_Sexo_nao_nulo_de_acordo_com_enum_genero() {
         assertTrue(ValidaFuncionario.valida(funcionario));
     }
-    
+
     /**
      * Nao deve aceitar salario invalido.
      */

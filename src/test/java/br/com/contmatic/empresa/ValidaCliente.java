@@ -12,7 +12,7 @@ import javax.validation.ValidatorFactory;
  * The Class ValidaCliente.
  */
 public class ValidaCliente {
-    
+
     /**
      * Procura erro.
      *

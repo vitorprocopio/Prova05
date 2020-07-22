@@ -24,25 +24,25 @@ public class FuncionarioTemplate implements TemplateLoader {
 
     /** The conta 1. */
     ContaBancaria conta1 = new ContaBancaria("João", "123", "4567");
-    
+
     /** The conta 2. */
     ContaBancaria conta2 = new ContaBancaria("José", "321", "7654");
-    
+
     /** The horario 1. */
-    Horario horario1 = new Horario (new LocalTime(9, 00, 00), new LocalTime(12, 00, 00), new LocalTime(13, 00, 00), new LocalTime(18, 00, 00));
-    
+    Horario horario1 = new Horario(new LocalTime(9, 00, 00), new LocalTime(12, 00, 00), new LocalTime(13, 00, 00), new LocalTime(18, 00, 00));
+
     /** The horario 2. */
-    Horario horario2 = new Horario (new LocalTime(7, 00, 00), new LocalTime(11, 00, 00), new LocalTime(12, 00, 00), new LocalTime(16, 00, 00));;
+    Horario horario2 = new Horario(new LocalTime(7, 00, 00), new LocalTime(11, 00, 00), new LocalTime(12, 00, 00), new LocalTime(16, 00, 00));;
 
     /** The enderecos. */
     Set<Endereco> enderecos = new HashSet<>();
-    
+
     /** The endereco 1. */
     Endereco endereco1 = new Endereco("01234567", "Rua 1 de Abril", 1, "Bloco 1 Apto 102", "Bairro Um", "São Paulo", Estado.SP, "Brasil");
-    
+
     /** The endereco 2. */
-    Endereco endereco2 = new Endereco ("03315000", "Rua Padre Estevão Pernet", 215, null, "Tatuapé", "São Paulo", Estado.SP, "Brasil");
-    
+    Endereco endereco2 = new Endereco("03315000", "Rua Padre Estevão Pernet", 215, null, "Tatuapé", "São Paulo", Estado.SP, "Brasil");
+
     /**
      * Load.
      */
@@ -86,7 +86,8 @@ public class FuncionarioTemplate implements TemplateLoader {
         });
         Fixture.of(Funcionario.class).addTemplate("cpfInvalido").inherits("valido", new Rule() {
             {
-                add("cpf", random("", "           ", " 13084850001", " 1308485001", "0", "-1", "-99999", "-100000", "100000", "13084850001", "77831284835", "7783128483A", "Z7831284834", "@7783128483", "7783 284834"));
+                add("cpf", random("", "           ", " 13084850001", " 1308485001", "0", "-1", "-99999", "-100000", "100000", "13084850001", "77831284835", "7783128483A", "Z7831284834", "@7783128483",
+                    "7783 284834"));
             }
         });
         Fixture.of(Funcionario.class).addTemplate("salarioInvalido").inherits("valido", new Rule() {

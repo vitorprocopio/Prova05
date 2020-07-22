@@ -23,14 +23,6 @@ public class ClienteTest {
     /** The cliente. */
     private Cliente cliente;
 
-    // @Before
-    // public void init() {
-    // contato = new Contato("12345678", "987654321", "123456789", "email@contato.com.br");
-    // endereco = new Endereco("01234567", "Rua 1 de Abril", 1, "Bloco 1 Apto 102", "Bairro Um", "São Paulo", Estado.SP, "Brasil");
-    // data = LocalDate.of(1970, 4, 6);
-    // cliente = new Cliente("101", "Ana Maria", data, "12345678909", endereco, contato);
-    // }
-
     /**
      * Load.
      */
@@ -55,7 +47,7 @@ public class ClienteTest {
         cliente.getCodigo();
         assertFalse(ValidaCliente.valida(Fixture.from(Cliente.class).gimme("codigoInvalido")));
     }
-    
+
     /**
      * Nao deve aceitar codigo nulo.
      */
@@ -126,7 +118,7 @@ public class ClienteTest {
     public void deve_aceitar_codigo_nao_nulo_com_ate_5_digitos_numericos() {
         assertTrue(ValidaCliente.valida(cliente));
     }
-    
+
     /**
      * Nao deve aceitar nome invalido.
      */
@@ -162,7 +154,7 @@ public class ClienteTest {
         cliente.setNome("Ana ");
         assertFalse(ValidaCliente.valida(cliente));
     }
-    
+
     /**
      * Nao deve aceitar nome em branco.
      */
@@ -219,7 +211,7 @@ public class ClienteTest {
     public void deve_aceitar_nome_nao_nulo_somente_com_letras_e_espacos_de_1_até_100_caracteres() {
         assertTrue(ValidaCliente.valida(cliente));
     }
-    
+
     /**
      * Nao deve aceitar cpf invalido.
      */
@@ -351,7 +343,7 @@ public class ClienteTest {
         cliente.getCodigo();
         assertFalse(ValidaCliente.valida(Fixture.from(Cliente.class).gimme("dataNascimentoInvalido")));
     }
-    
+
     /**
      * Nao deve aceitar data nascimento nula.
      */
@@ -360,7 +352,7 @@ public class ClienteTest {
         cliente.setDataNascimento(null);
         assertFalse(ValidaCliente.valida(cliente));
     }
-    
+
     /**
      * Nao deve aceitar data nascimento anterior a 01 01 1900.
      */

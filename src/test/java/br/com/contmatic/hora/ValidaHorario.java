@@ -12,7 +12,7 @@ import javax.validation.ValidatorFactory;
  * The Class ValidaHorario.
  */
 public class ValidaHorario {
-    
+
     /**
      * Procura erro.
      *

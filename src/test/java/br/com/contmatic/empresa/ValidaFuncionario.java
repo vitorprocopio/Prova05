@@ -12,7 +12,7 @@ import javax.validation.ValidatorFactory;
  * The Class ValidaFuncionario.
  */
 public class ValidaFuncionario {
-    
+
     /**
      * Procura erro.
      *

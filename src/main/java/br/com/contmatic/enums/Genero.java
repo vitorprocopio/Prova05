@@ -5,19 +5,19 @@ package br.com.contmatic.enums;
  * The Enum Genero.
  */
 public enum Genero {
-    
-    /** The f. */
-    F("Feminino"), 
-    
-    /** The m. */
-    M("Masculino"), 
-    
-    /** The o. */
-    O("Outro");
+
+                    /** The f. */
+                    F("Feminino"),
+
+                    /** The m. */
+                    M("Masculino"),
+
+                    /** The o. */
+                    O("Outro");
 
     /** The descricao. */
     String descricao;
-    
+
     /**
      * Instantiates a new genero.
      *

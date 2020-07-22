@@ -12,7 +12,7 @@ import javax.validation.ValidatorFactory;
  * The Class ValidaContato.
  */
 public class ValidaContato {
-    
+
     /**
      * Procura erro.
      *

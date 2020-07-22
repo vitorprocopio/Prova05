@@ -50,5 +50,5 @@ public class ValidaEmpresa {
         }
         return true;
     }
-    
+
 }

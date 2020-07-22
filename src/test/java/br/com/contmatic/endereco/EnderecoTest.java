@@ -19,19 +19,14 @@ import br.com.six2six.fixturefactory.Fixture;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
 public class EnderecoTest {
-    
+
     /** The endereco. */
     private Endereco endereco;
-    
-//    @Before
-//    public void init () {
-//        endereco = new Endereco("01234567", "Rua 1 de Abril", 1, "Bloco 1 Apto 102", "Bairro Um", "São Paulo", Estado.SP, "Estados Unidos");
-//    }
-    
+
     /**
- * Load.
- */
-@BeforeClass
+     * Load.
+     */
+    @BeforeClass
     public static void load() {
         new EnderecoTemplate().load();
     }
@@ -61,16 +56,16 @@ public class EnderecoTest {
         endereco.setCep(null);
         assertFalse(ValidaEndereco.valida(endereco));
     }
-        
+
     /**
      * Nao deve aceitar cep em branco.
      */
     @Test
     public void nao_deve_aceitar_cep_em_branco() {
-        endereco.setCep(" ");  
+        endereco.setCep(" ");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar cep vazio.
      */
@@ -79,25 +74,25 @@ public class EnderecoTest {
         endereco.setCep("");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar cep com menos de oito digitos.
      */
     @Test
     public void nao_deve_aceitar_cep_com_menos_de_oito_digitos() {
-        endereco.setCep("123"); 
+        endereco.setCep("123");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar cep com mais de oito digitos.
      */
     @Test
     public void nao_deve_aceitar_cep_com_mais_de_oito_digitos() {
-        endereco.setCep("1234567890"); 
+        endereco.setCep("1234567890");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-        
+
     /**
      * Nao deve aceitar cep com letras.
      */
@@ -106,7 +101,7 @@ public class EnderecoTest {
         endereco.setCep("1234567a");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar cep com caracteres especiais.
      */
@@ -115,7 +110,7 @@ public class EnderecoTest {
         endereco.setCep("1234567@");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar cep com espacos.
      */
@@ -124,7 +119,7 @@ public class EnderecoTest {
         endereco.setCep("1234 678");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Deve aceitar cep somente com 8 digitos numericos.
      */
@@ -132,7 +127,7 @@ public class EnderecoTest {
     public void deve_aceitar_cep_somente_com_8_digitos_numericos() {
         assertTrue(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar rua invalida.
      */
@@ -141,7 +136,7 @@ public class EnderecoTest {
         endereco.getRua();
         assertFalse(ValidaEndereco.valida(Fixture.from(Endereco.class).gimme("ruaInvalido")));
     }
-    
+
     /**
      * Nao deve aceitar rua nulo.
      */
@@ -150,16 +145,16 @@ public class EnderecoTest {
         endereco.setRua(null);
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar nome da rua em branco.
      */
     @Test
     public void nao_deve_aceitar_nome_da_rua_em_branco() {
-        endereco.setRua("   "); 
+        endereco.setRua("   ");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar rua vazio.
      */
@@ -168,39 +163,39 @@ public class EnderecoTest {
         endereco.setRua("");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar rua com menos de oito digitos.
      */
     @Ignore
     @Test
     public void nao_deve_aceitar_rua_com_menos_de_oito_digitos() {
-        endereco.setRua("456"); 
+        endereco.setRua("456");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar rua com mais de 100 digitos.
      */
     @Test
     public void nao_deve_aceitar_rua_com_mais_de_100_digitos() {
         String maior = "1";
-        for(int i = 0; i < 100; i++) {
+        for(int i = 0 ; i < 100 ; i++) {
             maior += "1";
         }
-        endereco.setRua(maior); 
+        endereco.setRua(maior);
         assertFalse(ValidaEndereco.valida(endereco));
     }
-            
+
     /**
      * Nao deve aceitar rua com caracteres especiais.
      */
-    @Test 
+    @Test
     public void nao_deve_aceitar_rua_com_caracteres_especiais() {
         endereco.setRua("Rua Costa & Silva");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Deve aceitar rua nao nulo de 1 até 100 caracteres alfanumericos e espacos.
      */
@@ -208,7 +203,7 @@ public class EnderecoTest {
     public void deve_aceitar_rua_nao_nulo_de_1_até_100_caracteres_alfanumericos_e_espacos() {
         assertTrue(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar numero invalido.
      */
@@ -217,34 +212,34 @@ public class EnderecoTest {
         endereco.getNumero();
         assertFalse(ValidaEndereco.valida(Fixture.from(Endereco.class).gimme("numeroInvalido")));
     }
-    
+
     /**
      * Nao deve aceitar numero nulo.
      */
     @Test
     public void nao_deve_aceitar_numero_nulo() {
-        endereco.setNumero(null); 
+        endereco.setNumero(null);
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar numero maior que 99999.
      */
     @Test
     public void nao_deve_aceitar_numero_maior_que_99999() {
-        endereco.setNumero(100000); 
+        endereco.setNumero(100000);
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar numero negativo.
      */
     @Test
-    public void nao_deve_aceitar_numero_negativo() { 
+    public void nao_deve_aceitar_numero_negativo() {
         endereco.setNumero(-1);
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Deve aceitar numero até 99999.
      */
@@ -252,7 +247,7 @@ public class EnderecoTest {
     public void deve_aceitar_numero_até_99999() {
         assertTrue(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar complemento invalido.
      */
@@ -261,36 +256,37 @@ public class EnderecoTest {
         endereco.getComplemento();
         assertFalse(ValidaEndereco.valida(Fixture.from(Endereco.class).gimme("complementoInvalido")));
     }
-    
+
     /**
      * Nao deve aceitar complemento com mais de 50 digitos.
      */
     @Test
     public void nao_deve_aceitar_complemento_com_mais_de_50_digitos() {
         String maior = "1";
-        for(int i = 0; i < 50; i++) {
+        for(int i = 0 ; i < 50 ; i++) {
             maior += "1";
         }
-        endereco.setComplemento(maior); 
+        endereco.setComplemento(maior);
         assertFalse(ValidaEndereco.valida(endereco));
     }
-            
+
     /**
      * Nao deve aceitar complemento com caracteres especiais.
      */
-    @Test 
+    @Test
     public void nao_deve_aceitar_complemento_com_caracteres_especiais() {
         endereco.setRua("Bloco #1 Apto. 102");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Deve aceitar complemento de 1 até 50 caracteres alfanumericos e espacos.
      */
     @Test
     public void deve_aceitar_complemento_de_1_até_50_caracteres_alfanumericos_e_espacos() {
-        assertTrue(ValidaEndereco.valida(endereco));    }
-    
+        assertTrue(ValidaEndereco.valida(endereco));
+    }
+
     /**
      * Nao deve aceitar bairro invalido.
      */
@@ -299,26 +295,26 @@ public class EnderecoTest {
         endereco.getBairro();
         assertFalse(ValidaEndereco.valida(Fixture.from(Endereco.class).gimme("bairroInvalido")));
     }
-    
+
     /**
      * Nao deve aceitar nome do bairro em branco.
      */
     @Test
     public void nao_deve_aceitar_nome_do_bairro_em_branco() {
-        endereco.setBairro(" ");  
+        endereco.setBairro(" ");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar bairro com menos de oito digitos.
      */
     @Ignore
     @Test
     public void nao_deve_aceitar_bairro_com_menos_de_oito_digitos() {
-        endereco.setBairro("456"); 
+        endereco.setBairro("456");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar bairro nulo.
      */
@@ -327,7 +323,7 @@ public class EnderecoTest {
         endereco.setBairro(null);
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar bairro vazio.
      */
@@ -336,29 +332,29 @@ public class EnderecoTest {
         endereco.setBairro("");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar bairro com mais de 50 digitos.
      */
     @Test
     public void nao_deve_aceitar_bairro_com_mais_de_50_digitos() {
         String maior = "1";
-        for(int i = 0; i < 50; i++) {
+        for(int i = 0 ; i < 50 ; i++) {
             maior += "1";
         }
-        endereco.setBairro(maior); 
+        endereco.setBairro(maior);
         assertFalse(ValidaEndereco.valida(endereco));
     }
-            
+
     /**
      * Nao deve aceitar bairro com caracteres especiais.
      */
-    @Test 
+    @Test
     public void nao_deve_aceitar_bairro_com_caracteres_especiais() {
         endereco.setBairro("Bairro #1");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Deve aceitar bairro nao nulo de 1 até 100 caracteres alfanumericos e espacos.
      */
@@ -366,7 +362,7 @@ public class EnderecoTest {
     public void deve_aceitar_bairro_nao_nulo_de_1_até_100_caracteres_alfanumericos_e_espacos() {
         assertTrue(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar cidade invalido.
      */
@@ -375,7 +371,7 @@ public class EnderecoTest {
         endereco.getCidade();
         assertFalse(ValidaEndereco.valida(Fixture.from(Endereco.class).gimme("cidadeInvalido")));
     }
-    
+
     /**
      * Nao deve aceitar cidade nulo.
      */
@@ -384,16 +380,16 @@ public class EnderecoTest {
         endereco.setCidade(null);
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar cidade em branco.
      */
     @Test
     public void nao_deve_aceitar_cidade_em_branco() {
-        endereco.setCidade(" "); 
+        endereco.setCidade(" ");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar cidade vazio.
      */
@@ -402,36 +398,37 @@ public class EnderecoTest {
         endereco.setCidade("");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar cidade com mais de 50 digitos.
      */
     @Test
     public void nao_deve_aceitar_Cidade_com_mais_de_50_digitos() {
         String maior = "1";
-        for(int i = 0; i < 50; i++) {
+        for(int i = 0 ; i < 50 ; i++) {
             maior += "1";
         }
-        endereco.setCidade(maior); 
+        endereco.setCidade(maior);
         assertFalse(ValidaEndereco.valida(endereco));
     }
-            
+
     /**
      * Nao deve aceitar cidade com caracteres especiais.
      */
-    @Test 
+    @Test
     public void nao_deve_aceitar_Cidade_com_caracteres_especiais() {
         endereco.setCidade("S@o Paulo");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Deve aceitar cidade nao nulo de 1 até 50 caracteres alfanumericos e espacos.
      */
     @Test
     public void deve_aceitar_Cidade_nao_nulo_de_1_até_50_caracteres_alfanumericos_e_espacos() {
-        assertTrue(ValidaEndereco.valida(endereco));    }
-    
+        assertTrue(ValidaEndereco.valida(endereco));
+    }
+
     /**
      * Nao deve aceitar U F nulo.
      */
@@ -440,7 +437,7 @@ public class EnderecoTest {
         endereco.setUf(null);
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Deve aceitar U F valido conforme enum estado.
      */
@@ -448,7 +445,7 @@ public class EnderecoTest {
     public void deve_aceitar_UF_valido_conforme_enum_estado() {
         assertTrue(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar pais invalido.
      */
@@ -457,7 +454,7 @@ public class EnderecoTest {
         endereco.getCep();
         assertFalse(ValidaEndereco.valida(Fixture.from(Endereco.class).gimme("paisInvalido")));
     }
-    
+
     /**
      * Nao deve aceitar pais nulo.
      */
@@ -466,16 +463,16 @@ public class EnderecoTest {
         endereco.setPais(null);
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar pais em branco.
      */
     @Test
     public void nao_deve_aceitar_pais_em_branco() {
-        endereco.setPais(" ");  
+        endereco.setPais(" ");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar pais vazio.
      */
@@ -484,38 +481,38 @@ public class EnderecoTest {
         endereco.setPais("");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar pais com mais de 50 digitos.
      */
     @Test
     public void nao_deve_aceitar_Pais_com_mais_de_50_digitos() {
         String maior = "1";
-        for(int i = 0; i < 50; i++) {
+        for(int i = 0 ; i < 50 ; i++) {
             maior += "1";
         }
-        endereco.setPais(maior); 
+        endereco.setPais(maior);
         assertFalse(ValidaEndereco.valida(endereco));
     }
-            
+
     /**
      * Nao deve aceitar pais com caracteres especiais.
      */
-    @Test 
+    @Test
     public void nao_deve_aceitar_Pais_com_caracteres_especiais() {
         endereco.setPais("Republica Dominican@");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Nao deve aceitar pais com numeros.
      */
-    @Test 
+    @Test
     public void nao_deve_aceitar_Pais_com_numeros() {
         endereco.setPais("Republica 1");
         assertFalse(ValidaEndereco.valida(endereco));
     }
-    
+
     /**
      * Deve aceitar pais nao nulo de 1 até 50 caracteres alfabeticos e espacos.
      */
@@ -523,5 +520,5 @@ public class EnderecoTest {
     public void deve_aceitar_Pais_nao_nulo_de_1_até_50_caracteres_alfabeticos_e_espacos() {
         assertTrue(ValidaEndereco.valida(endereco));
     }
-    
+
 }

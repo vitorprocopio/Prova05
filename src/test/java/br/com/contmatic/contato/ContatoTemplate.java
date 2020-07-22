@@ -43,6 +43,6 @@ public class ContatoTemplate implements TemplateLoader {
                 add("email", random("@1234567", "@contato.com", "432 1123@contato.com", "12&34567contato.com", "123456#contato.com", "-1", "email123"));
             }
         });
-        
+
     }
 }

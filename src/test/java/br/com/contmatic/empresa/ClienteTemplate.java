@@ -31,9 +31,9 @@ public class ClienteTemplate implements TemplateLoader {
     @Override
     public void load() {
         new EnderecoTemplate().load();
-        
+
         new ContatoTemplate().load();
-        
+
         for(int i = 0 ; i < 5 ; i++) {
             enderecos.add(Fixture.from(Endereco.class).gimme("valido"));
         }
@@ -48,7 +48,6 @@ public class ClienteTemplate implements TemplateLoader {
                 add("cpf", random("87743097064", "19939474008", "99893313082", "27459389080"));
                 add("enderecos", enderecos);
                 add("contatos", contatos);
-
             }
         });
         Fixture.of(Cliente.class).addTemplate("codigoInvalido").inherits("valido", new Rule() {

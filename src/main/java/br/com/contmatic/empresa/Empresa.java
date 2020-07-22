@@ -81,31 +81,8 @@ public class Empresa {
      * @param codigo the new codigo
      */
     public void setCodigo(String codigo) {
-        // verificaTamanhoAte5(codigo);
-        // verificaContemSomenteNumeros(codigo);
-        // verificaCampoVazio(codigo);
         this.codigo = codigo;
     }
-
-    // private void verificaTamanhoAte5(String campo) {
-    // if(campo.length() > 5) {
-    // throw new IllegalArgumentException("Este campo deve ter no máximo 5 dígitos");
-    // }
-    // }
-
-    // private void verificaCampoVazio(String campo) {
-    // if(campo.isEmpty()) {
-    // throw new IllegalArgumentException("Este campo não deve ser vazio");
-    // }
-    // }
-
-    // private void verificaContemSomenteNumeros(String campo) {
-    // for(char palavra: campo.toCharArray()) {
-    // if(!Character.isDigit(palavra)) {
-    // throw new IllegalArgumentException("Só deve conter números");
-    // }
-    // }
-    // }
 
     /**
      * Gets the cnpj.
@@ -125,25 +102,6 @@ public class Empresa {
         this.cnpj = cnpj;
     }
 
-    // private void verificaTamanhoCnpj(String cnpj) {
-    // if(cnpj.length() != 14) {
-    // throw new IllegalArgumentException("O número da agência deve ter 4 dígitos");
-    // }
-    // }
-    //
-    // private void verificaTodosDigitosRepetidos(String cnpj) {
-    // if (cnpj.equals("00000000000000") || cnpj.equals("11111111111111") || cnpj.equals("22222222222222") || cnpj.equals("33333333333333") || cnpj.equals("44444444444444") ||
-    // cnpj.equals("55555555555555")|| cnpj.equals("66666666666666") || cnpj.equals("77777777777777") || cnpj.equals("88888888888888") || cnpj.equals("99999999999999")) {
-    // throw new IllegalArgumentException("Os digítos do CNPJ não podem ser todos repetidos");
-    // }
-    // }
-
-    // private void verificaCampoNulo(String campo) {
-    // if (campo == null) {
-    // throw new IllegalArgumentException("Esse campo não pode ser nulo");
-    // }
-    // }
-
     /**
      * Gets the nome fantasia.
      *
@@ -159,23 +117,8 @@ public class Empresa {
      * @param nomeFantasia the new nome fantasia
      */
     public void setNomeFantasia(String nomeFantasia) {
-        // verificaCampoVazio(nomeFantasia);
-        // verificaEspacoInicio(nomeFantasia);
-        // verificaTamanhoAteCem(nomeFantasia);
         this.nomeFantasia = nomeFantasia;
     }
-
-    // private void verificaEspacoInicio(String campo) {
-    // if(campo.charAt(0) == ' ') {
-    // throw new IllegalArgumentException("O campo não deve começar com espaços");
-    // }
-    // }
-
-    // private void verificaTamanhoAteCem(String campo) {
-    // if(campo.length() > 100) {
-    // throw new IllegalArgumentException("O campo deve ter até 100 caracteres");
-    // }
-    // }
 
     /**
      * Gets the razao social.
@@ -192,10 +135,6 @@ public class Empresa {
      * @param razaoSocial the new razao social
      */
     public void setRazaoSocial(String razaoSocial) {
-        // verificaCampoNulo(razaoSocial);
-        // verificaCampoVazio(razaoSocial);
-        // verificaEspacoInicio(razaoSocial);
-        // verificaTamanhoAteCem(razaoSocial);
         this.razaoSocial = razaoSocial;
     }
 
@@ -214,15 +153,8 @@ public class Empresa {
      * @param enderecos the new enderecos
      */
     public void setEnderecos(Set<Endereco> enderecos) {
-        // verificaEnderecoNulo(endereco);
         this.enderecos = enderecos;
     }
-
-    // private void verificaEnderecoNulo(Endereco endereco) {
-    // if (endereco == null) {
-    // throw new IllegalArgumentException("Esse campo não pode ser nulo");
-    // }
-    // }
 
     /**
      * Hash code.
