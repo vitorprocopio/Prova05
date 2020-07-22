@@ -12,7 +12,7 @@ import javax.validation.ValidatorFactory;
  * The Class ValidaEndereco.
  */
 public class ValidaEndereco {
-    
+
     /**
      * Procura erro.
      *

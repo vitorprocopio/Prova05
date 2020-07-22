@@ -21,7 +21,6 @@ public class EmpresaTest {
 
     /** The empresa. */
     private Empresa empresa;
-    // private Endereco endereco;
 
     /**
      * Load.
@@ -38,12 +37,6 @@ public class EmpresaTest {
     public void init() {
         empresa = Fixture.from(Empresa.class).gimme("valido");
     }
-
-    // @Before
-    // public void init () {
-    // endereco = new Endereco ("03315000", "Rua Padre Estevão Pernet", 215, null, "Tatuapé", "São Paulo", Estado.SP, "Brasil");
-    // empresa = new Empresa("303", "58119371000177", "Contmatic", "Softmatic Ltda.", endereco);
-    // }
 
     /**
      * Nao deve aceitar codigo invalido.
@@ -249,7 +242,7 @@ public class EmpresaTest {
         empresa.getCnpj();
         assertTrue(ValidaEmpresa.valida(empresa));
     }
-    
+
     /**
      * Nao deve aceitar nome fantasia invalido.
      */
@@ -276,7 +269,7 @@ public class EmpresaTest {
         empresa.setNomeFantasia(" Contmatic");
         assertFalse(ValidaEmpresa.valida(empresa));
     }
-    
+
     /**
      * Nao deve aceitar espaco no final do nome fantasia.
      */
@@ -325,7 +318,7 @@ public class EmpresaTest {
         empresa.getNomeFantasia();
         assertTrue(ValidaEmpresa.valida(empresa));
     }
-    
+
     /**
      * Nao deve aceitar razao social invalido.
      */
@@ -352,7 +345,7 @@ public class EmpresaTest {
         empresa.setRazaoSocial(" Softmatic Ltda.");
         assertFalse(ValidaEmpresa.valida(empresa));
     }
-    
+
     /**
      * Nao deve aceitar espaco no final da razao social.
      */

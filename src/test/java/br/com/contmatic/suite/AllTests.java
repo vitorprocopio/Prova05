@@ -45,5 +45,5 @@ public class AllTests {
         System.out.println("FIM DE TODOS OS TESTES");
         System.out.println("-----------------------");
     }
-    
+
 }

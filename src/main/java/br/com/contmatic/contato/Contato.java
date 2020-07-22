@@ -13,23 +13,23 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * The Class Contato.
  */
 public class Contato {
-    
-	/** The telefone. */
-	@Pattern(regexp = "\\d{8}", message = "O telefone deve conter somente 8 digítos numéricos")
+
+    /** The telefone. */
+    @Pattern(regexp = "\\d{8}", message = "O telefone deve conter somente 8 digítos numéricos")
     private String telefone;
-    
-	/** The celular. */
-	@Pattern(regexp = "\\d{9}", message = "O celular deve conter somente 9 digítos numéricos")
-	private String celular;
-    
-	/** The recado. */
-	@Pattern(regexp = "\\d{8,9}", message = "O número para contato deve conter somente 8 ou 9 digítos numéricos")
+
+    /** The celular. */
+    @Pattern(regexp = "\\d{9}", message = "O celular deve conter somente 9 digítos numéricos")
+    private String celular;
+
+    /** The recado. */
+    @Pattern(regexp = "\\d{8,9}", message = "O número para contato deve conter somente 8 ou 9 digítos numéricos")
     private String recado;
-    
+
     /** The email. */
     @Email(message = "O endereço de email é inválido")
     private String email;
-    
+
     /**
      * Instantiates a new contato.
      *
@@ -60,32 +60,15 @@ public class Contato {
      * @param telefone the new telefone
      */
     public void setTelefone(String telefone) {
-//        if(telefone != null) {
-//        verificaTamanhoTelefone(telefone);
-//        verificaContemSomenteNumeros(telefone);
-//        }
-    	this.telefone = telefone;
+        this.telefone = telefone;
     }
-    
-//    private void verificaContemSomenteNumeros(String campo) {
-//        for(char palavra: campo.toCharArray()) {
-//            if(!Character.isDigit(palavra)) {
-//                throw new IllegalArgumentException("Só deve conter números");
-//            }
-//        }
-//    }
-//
-//    private void verificaTamanhoTelefone(String telefone) {
-//        if(telefone.length() != 8) {
-//           throw new IllegalArgumentException("O número deve conter 8 dígitos"); 
-//        }
-        
+
     /**
- * Gets the celular.
- *
- * @return the celular
- */
-public String getCelular() {
+     * Gets the celular.
+     *
+     * @return the celular
+     */
+    public String getCelular() {
         return celular;
     }
 
@@ -95,16 +78,6 @@ public String getCelular() {
      * @param celular the new celular
      */
     public void setCelular(String celular) {
-//        if(celular != null) {
-//        verificaTamanhoCelular(celular);
-//        verificaContemSomenteNumeros(celular);
-//        }
-//    }
-//
-//    private void verificaTamanhoCelular(String celular) {
-//        if(celular.length() != 9) {
-//            throw new IllegalArgumentException("O número deve conter 9 dígitos"); 
-//         }
         this.celular = celular;
     }
 
@@ -123,16 +96,6 @@ public String getCelular() {
      * @param recado the new recado
      */
     public void setRecado(String recado) {
-//        if(recado != null) {
-//        verificaTamanhoRecado(recado);
-//        verificaContemSomenteNumeros(recado);
-//        }
-//    }
-//
-//    private void verificaTamanhoRecado(String recado) {
-//        if(recado.length() < 8 || recado.length() > 9) {
-//            throw new IllegalArgumentException("O número deve conter 8 ou 9 dígitos"); 
-//         }
         this.recado = recado;
     }
 
@@ -151,23 +114,9 @@ public String getCelular() {
      * @param email the new email
      */
     public void setEmail(String email) {
-//        if(email != null) {
-//        verificaTamanhoEmail(email);
-//        }
-//    }
-//
-//    private void verificaTamanhoEmail(String email) {
-//        if(email.length() > 250) {
-//            throw new IllegalArgumentException("O email deve ter até 100 caracteres");
-//        }
-//        for(char palavra: email.toCharArray()) {
-//            if(Character.isSpaceChar(palavra)) {
-//                throw new IllegalArgumentException("Não deve ter espaço");
-//            }
-//        }
         this.email = email;
     }
-    
+
     /**
      * Equals.
      *
@@ -195,5 +144,5 @@ public String getCelular() {
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
     }
-    
+
 }

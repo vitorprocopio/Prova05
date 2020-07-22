@@ -20,7 +20,6 @@ public class BancoTemplate implements TemplateLoader {
                 add("titular", name());
                 add("numero", random("123", "1", "99998", "4321", "000123456789", "15900"));
                 add("agencia", random("1234", "0009", "9999", "4321", "0001", "0951", "0000"));
-                // add("endereco", one(Endereco.class, "valid"));
             }
         });
         Fixture.of(ContaBancaria.class).addTemplate("titularInvalido").inherits("valido", new Rule() {

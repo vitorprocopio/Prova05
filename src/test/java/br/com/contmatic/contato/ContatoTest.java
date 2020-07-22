@@ -22,11 +22,6 @@ public class ContatoTest {
     /** The contato. */
     private Contato contato;
 
-    // @Before
-    // public void init() {
-    // contato = new Contato("12345678", "987654321", "123456789", "email@contato.com.br");
-    // }
-
     /**
      * Load.
      */
@@ -113,7 +108,7 @@ public class ContatoTest {
         contato.getTelefone();
         assertFalse(ValidaContato.valida(Fixture.from(Contato.class).gimme("celularInvalido")));
     }
-    
+
     /**
      * Nao deve aceitar celular com mais 9 dígitos.
      */
@@ -175,7 +170,7 @@ public class ContatoTest {
         contato.getTelefone();
         assertFalse(ValidaContato.valida(Fixture.from(Contato.class).gimme("recadoInvalido")));
     }
-    
+
     /**
      * Nao deve aceitar recado com mais 9 dígitos.
      */
@@ -228,7 +223,7 @@ public class ContatoTest {
     public void deve_aceitar_recado_somente_com_8_digitos_numericos() {
         assertTrue(ValidaContato.valida(contato));
     }
-    
+
     /**
      * Nao deve aceitar email invalido.
      */
