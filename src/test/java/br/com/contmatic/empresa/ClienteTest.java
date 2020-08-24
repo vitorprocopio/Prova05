@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.six2six.fixturefactory.Fixture;
+import nl.jqno.equalsverifier.EqualsVerifier;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -413,4 +414,8 @@ public class ClienteTest {
         assertTrue(ValidaCliente.valida(cliente));
     }
 
+    @Test
+    public void equalsContract() {
+        EqualsVerifier.simple().forClass(Cliente.class).withIgnoredFields("codigo", "nome", "dataNascimento", "enderecos", "contatos").verify();
+    }
 }

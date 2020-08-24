@@ -174,7 +174,7 @@ public class Empresa {
      */
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Cliente)) {
+        if (!(obj instanceof Empresa)) {
             return false;
         }
         if (this == obj) {

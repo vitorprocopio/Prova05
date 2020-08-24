@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.six2six.fixturefactory.Fixture;
+import nl.jqno.equalsverifier.EqualsVerifier;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -522,6 +523,11 @@ public class ContaBancariaTest {
     public void deve_conter_o_valor_do_nome_do_titular_na_string_gerada() {
         String toStringConta = conta.toString();
         assertTrue(toStringConta.contains(conta.getTitular()));
+    }
+
+    @Test
+    public void equalsContract() {
+        EqualsVerifier.simple().forClass(ContaBancaria.class).withIgnoredFields("titular").verify();
     }
 
 }

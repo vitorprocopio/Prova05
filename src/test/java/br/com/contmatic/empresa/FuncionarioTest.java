@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.six2six.fixturefactory.Fixture;
+import nl.jqno.equalsverifier.EqualsVerifier;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -612,6 +613,11 @@ public class FuncionarioTest {
     @Test
     public void deve_aceitar_horario_nao_nulo_de_acordo_com_as_regras_da_classe_horario() {
         assertTrue(ValidaFuncionario.valida(funcionario));
+    }
+
+    @Test
+    public void equalsContract() {
+        EqualsVerifier.simple().forClass(Funcionario.class).withIgnoredFields("codigo", "nome", "dataNascimento", "nomeMae", "nomePai", "salario", "conta", "horario", "sexo", "enderecos").verify();
     }
 
 }

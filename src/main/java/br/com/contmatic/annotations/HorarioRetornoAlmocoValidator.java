@@ -24,11 +24,5 @@ public class HorarioRetornoAlmocoValidator implements ConstraintValidator<Horari
         Optional<LocalTime> optHorario = Optional.fromNullable(horario);
         return !(optHorario.or(LocalTime.now()).isBefore(new LocalTime(12, 00, 00)) || optHorario.or(LocalTime.now()).isAfter(new LocalTime(15, 00, 00)));
     }
-    // public boolean isValid(LocalTime horario, ConstraintValidatorContext cvc) {
-    // if (horario != null && (horario.isBefore(new LocalTime(12, 00, 00)) || horario.isAfter(new LocalTime(15, 00, 00)))) {
-    // return false;
-    // }
-    // return true;
-    // }
 
 }

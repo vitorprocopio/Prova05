@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.six2six.fixturefactory.Fixture;
+import nl.jqno.equalsverifier.EqualsVerifier;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -261,6 +262,11 @@ public class ContatoTest {
     @Test
     public void deve_aceitar_email_sem_espacos_ate_250_caracteres() {
         assertTrue(ValidaContato.valida(contato));
+    }
+    
+    @Test
+    public void equalsContract() {
+        EqualsVerifier.simple().forClass(Contato.class).verify();
     }
 
 }

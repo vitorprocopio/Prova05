@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.six2six.fixturefactory.Fixture;
+import nl.jqno.equalsverifier.EqualsVerifier;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -23,16 +24,7 @@ public class HorarioTest {
 
     /** The horario. */
     private Horario horario;
-    // private LocalTime entrada = new LocalTime(8, 00, 00);
-    // private LocalTime saidaAlmoco = new LocalTime(12, 30, 00);
-    // private LocalTime retornoAlmoco = new LocalTime(13, 30, 00);
-    // private LocalTime saida = new LocalTime(18, 00, 00);
-    //
-    // @Before
-    // public void init() {
-    // horario = new Horario(entrada, saidaAlmoco, retornoAlmoco, saida);
-    // }
-
+    
     /**
      * Load.
      */
@@ -233,4 +225,8 @@ public class HorarioTest {
         assertTrue(ValidaHorario.valida(horario));
     }
 
+    @Test
+    public void equalsContract() {
+        EqualsVerifier.simple().forClass(Horario.class).verify();
+    }
 }

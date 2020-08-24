@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.six2six.fixturefactory.Fixture;
+import nl.jqno.equalsverifier.EqualsVerifier;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -409,6 +410,11 @@ public class EmpresaTest {
     @Test
     public void deve_aceitar_endereco_nao_nulo_de_acordo_com_as_regras_da_classe_endereco() {
         assertTrue(ValidaEmpresa.valida(empresa));
+    }
+    
+    @Test
+    public void equalsContract() {
+        EqualsVerifier.simple().forClass(Empresa.class).withIgnoredFields("codigo", "nomeFantasia", "razaoSocial", "enderecos").verify();
     }
 
 }

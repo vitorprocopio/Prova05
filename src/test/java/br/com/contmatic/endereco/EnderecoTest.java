@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.six2six.fixturefactory.Fixture;
+import nl.jqno.equalsverifier.EqualsVerifier;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -519,6 +520,11 @@ public class EnderecoTest {
     @Test
     public void deve_aceitar_Pais_nao_nulo_de_1_até_50_caracteres_alfabeticos_e_espacos() {
         assertTrue(ValidaEndereco.valida(endereco));
+    }
+    
+    @Test
+    public void equalsContract() {
+        EqualsVerifier.simple().forClass(Endereco.class).withIgnoredFields("rua", "numero", "complemento", "bairro", "uf", "pais").verify();
     }
 
 }
