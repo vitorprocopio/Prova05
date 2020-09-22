@@ -35,7 +35,7 @@ public class Funcionario {
     private String codigo;
 
     /** The nome. */
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome inválido")
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú.]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome inválido")
     @NotBlank(message = "Não deve aceitar nome nulo nem vazio")
     private String nome;
 
@@ -46,12 +46,12 @@ public class Funcionario {
     private LocalDate dataNascimento;
 
     /** The nome mae. */
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome mãe inválido")
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú.]['A-ZÀ-Ú a-zà-ú.]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú.]$", message = "Nome mãe inválido")
     @NotBlank(message = "Não deve aceitar nome da mãe nulo nem vazio")
     private String nomeMae;
 
     /** The nome pai. */
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome pai inválido")
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú.]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome pai inválido")
     @NotBlank(message = "Não deve aceitar nome do pai nulo nem vazio")
     private String nomePai;
 

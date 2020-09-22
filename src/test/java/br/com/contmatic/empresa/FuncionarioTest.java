@@ -3,14 +3,13 @@ package br.com.contmatic.empresa;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.jeasy.random.EasyRandom;
 import org.joda.time.LocalDate;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.com.six2six.fixturefactory.Fixture;
 import nl.jqno.equalsverifier.EqualsVerifier;
 
 // TODO: Auto-generated Javadoc
@@ -23,30 +22,38 @@ public class FuncionarioTest {
 
     /** The funcionario. */
     private Funcionario funcionario;
+    
+    private Funcionario invalido;
+    
+    @Before
+    public void init() {
+        EasyRandom funcionarioValido = new EasyRandom(FuncionarioTemplate.funcionarioValido());
+        funcionario = funcionarioValido.nextObject(Funcionario.class);
+        System.out.println(funcionario);
+    }
 
     /**
      * Load.
      */
-    @BeforeClass
-    public static void load() {
-        new FuncionarioTemplate().load();
-    }
-
-    /**
-     * Init.
-     */
-    @Before
-    public void init() {
-        funcionario = Fixture.from(Funcionario.class).gimme("valido");
-    }
+//    @BeforeClass
+//    public static void load() {
+//        new FuncionarioTemplate().load();
+//    }
+//    @Test
+//    public void testeRandom() {
+//        System.out.println(FuncionarioTemplate.randomSalarioValido());
+//    }
+    
 
     /**
      * Nao deve aceitar codigo invalido.
      */
     @Test
     public void nao_deve_aceitar_codigo_invalido() {
-        funcionario.getCodigo();
-        assertFalse(ValidaFuncionario.valida(Fixture.from(Funcionario.class).gimme("codigoInvalido")));
+        EasyRandom funcionarioInvalido = new EasyRandom(FuncionarioTemplate.funcionarioInvalido());
+        invalido = funcionarioInvalido.nextObject(Funcionario.class);
+        invalido.getCodigo();
+        assertFalse(ValidaFuncionario.valida(invalido));
     }
 
     /**
@@ -125,8 +132,10 @@ public class FuncionarioTest {
      */
     @Test
     public void nao_deve_aceitar_nome_invalido() {
-        funcionario.getCodigo();
-        assertFalse(ValidaFuncionario.valida(Fixture.from(Funcionario.class).gimme("nomeInvalido")));
+        EasyRandom funcionarioInvalido = new EasyRandom(FuncionarioTemplate.funcionarioInvalido());
+        invalido = funcionarioInvalido.nextObject(Funcionario.class);
+        funcionario.getNome();
+        assertFalse(ValidaFuncionario.valida(invalido));
     }
 
     /**
@@ -213,6 +222,13 @@ public class FuncionarioTest {
         assertTrue(ValidaFuncionario.valida(funcionario));
     }
 
+    @Test
+    public void nao_deve_aceitar_nome__da_mae_invalido() {
+        EasyRandom funcionarioInvalido = new EasyRandom(FuncionarioTemplate.funcionarioInvalido());
+        invalido = funcionarioInvalido.nextObject(Funcionario.class);
+        funcionario.getNomeMae();
+        assertFalse(ValidaFuncionario.valida(invalido));
+    }
     /**
      * Nao deve aceitar nome da mae nulo.
      */
@@ -296,6 +312,14 @@ public class FuncionarioTest {
     public void deve_aceitar_nome_da_mae_nao_nulo_somente_com_letras_e_espacos_de_1_até_100_caracteres() {
         assertTrue(ValidaFuncionario.valida(funcionario));
     }
+    
+    @Test
+    public void nao_deve_aceitar_nome__do_pai_invalido() {
+        EasyRandom funcionarioInvalido = new EasyRandom(FuncionarioTemplate.funcionarioInvalido());
+        invalido = funcionarioInvalido.nextObject(Funcionario.class);
+        funcionario.getNomePai();
+        assertFalse(ValidaFuncionario.valida(invalido));
+    }
 
     /**
      * Nao deve aceitar espaco no comeco do nome do pai.
@@ -350,8 +374,10 @@ public class FuncionarioTest {
      */
     @Test
     public void nao_deve_aceitar_cpf_invalido() {
-        funcionario.getCodigo();
-        assertFalse(ValidaFuncionario.valida(Fixture.from(Funcionario.class).gimme("cpfInvalido")));
+        EasyRandom funcionarioInvalido = new EasyRandom(FuncionarioTemplate.funcionarioInvalido());
+        invalido = funcionarioInvalido.nextObject(Funcionario.class);
+        funcionario.getCpf();
+        assertFalse(ValidaFuncionario.valida(invalido));
     }
 
     /**
@@ -473,8 +499,10 @@ public class FuncionarioTest {
      */
     @Test
     public void nao_deve_aceitar_data_nascimento_invalida() {
+        EasyRandom funcionarioInvalido = new EasyRandom(FuncionarioTemplate.funcionarioInvalido());
+        invalido = funcionarioInvalido.nextObject(Funcionario.class);
         funcionario.getCodigo();
-        assertFalse(ValidaFuncionario.valida(Fixture.from(Funcionario.class).gimme("dataNascimentoInvalido")));
+        assertFalse(ValidaFuncionario.valida(invalido));
     }
 
     /**
@@ -551,8 +579,10 @@ public class FuncionarioTest {
      */
     @Test
     public void nao_deve_aceitar_salario_invalido() {
+        EasyRandom funcionarioInvalido = new EasyRandom(FuncionarioTemplate.funcionarioInvalido());
+        invalido = funcionarioInvalido.nextObject(Funcionario.class);
         funcionario.getSalario();
-        assertFalse(ValidaFuncionario.valida(Fixture.from(Funcionario.class).gimme("salarioInvalido")));
+        assertFalse(ValidaFuncionario.valida(invalido));
     }
 
     /**

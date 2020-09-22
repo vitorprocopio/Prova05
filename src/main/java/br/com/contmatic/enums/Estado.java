@@ -1,5 +1,7 @@
 package br.com.contmatic.enums;
 
+import java.util.Random;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Enum Estado.
@@ -106,6 +108,14 @@ public enum Estado {
      */
     public String getNome() {
         return nome;
+    }
+    
+    public static Estado randomUF(){
+        Random random = new Random();
+        int indice = random.nextInt(27);
+        
+        Estado uf = Estado.values()[indice];
+        return uf;
     }
 
 }

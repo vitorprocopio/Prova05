@@ -3,14 +3,13 @@ package br.com.contmatic.endereco;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.jeasy.random.EasyRandom;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.com.six2six.fixturefactory.Fixture;
 import nl.jqno.equalsverifier.EqualsVerifier;
 
 // TODO: Auto-generated Javadoc
@@ -23,30 +22,41 @@ public class EnderecoTest {
 
     /** The endereco. */
     private Endereco endereco;
-
-    /**
-     * Load.
-     */
-    @BeforeClass
-    public static void load() {
-        new EnderecoTemplate().load();
-    }
-
-    /**
-     * Init.
-     */
+    
+    private Endereco invalido;
+    
     @Before
     public void init() {
-        endereco = Fixture.from(Endereco.class).gimme("valido");
+        EasyRandom enderecoValido = new EasyRandom(EnderecoTemplate.enderecoValido());
+        endereco = enderecoValido.nextObject(Endereco.class);
+        System.out.println(endereco);
     }
+
+//    /**
+//     * Load.
+//     */
+//    @BeforeClass
+//    public static void load() {
+//        new EnderecoTemplate().load();
+//    }
+//
+//    /**
+//     * Init.
+//     */
+//    @Before
+//    public void init() {
+//        endereco = Fixture.from(Endereco.class).gimme("valido");
+//    }
 
     /**
      * Nao deve aceitar cep invalido.
      */
     @Test
     public void nao_deve_aceitar_cep_invalido() {
+        EasyRandom enderecoInvalido = new EasyRandom(EnderecoTemplate.enderecoInvalido());
+        invalido = enderecoInvalido.nextObject(Endereco.class);
         endereco.getCep();
-        assertFalse(ValidaEndereco.valida(Fixture.from(Endereco.class).gimme("cepInvalido")));
+        assertFalse(ValidaEndereco.valida(invalido));
     }
 
     /**
@@ -134,8 +144,10 @@ public class EnderecoTest {
      */
     @Test
     public void nao_deve_aceitar_rua_invalida() {
+        EasyRandom enderecoInvalido = new EasyRandom(EnderecoTemplate.enderecoInvalido());
+        invalido = enderecoInvalido.nextObject(Endereco.class);
         endereco.getRua();
-        assertFalse(ValidaEndereco.valida(Fixture.from(Endereco.class).gimme("ruaInvalido")));
+        assertFalse(ValidaEndereco.valida(invalido));
     }
 
     /**
@@ -210,8 +222,10 @@ public class EnderecoTest {
      */
     @Test
     public void nao_deve_aceitar_numero_invalido() {
+        EasyRandom enderecoInvalido = new EasyRandom(EnderecoTemplate.enderecoInvalido());
+        invalido = enderecoInvalido.nextObject(Endereco.class);
         endereco.getNumero();
-        assertFalse(ValidaEndereco.valida(Fixture.from(Endereco.class).gimme("numeroInvalido")));
+        assertFalse(ValidaEndereco.valida(invalido));
     }
 
     /**
@@ -254,8 +268,10 @@ public class EnderecoTest {
      */
     @Test
     public void nao_deve_aceitar_complemento_invalido() {
+        EasyRandom enderecoInvalido = new EasyRandom(EnderecoTemplate.enderecoInvalido());
+        invalido = enderecoInvalido.nextObject(Endereco.class);
         endereco.getComplemento();
-        assertFalse(ValidaEndereco.valida(Fixture.from(Endereco.class).gimme("complementoInvalido")));
+        assertFalse(ValidaEndereco.valida(invalido));
     }
 
     /**
@@ -293,8 +309,10 @@ public class EnderecoTest {
      */
     @Test
     public void nao_deve_aceitar_bairro_invalido() {
+        EasyRandom enderecoInvalido = new EasyRandom(EnderecoTemplate.enderecoInvalido());
+        invalido = enderecoInvalido.nextObject(Endereco.class);
         endereco.getBairro();
-        assertFalse(ValidaEndereco.valida(Fixture.from(Endereco.class).gimme("bairroInvalido")));
+        assertFalse(ValidaEndereco.valida(invalido));
     }
 
     /**
@@ -369,8 +387,10 @@ public class EnderecoTest {
      */
     @Test
     public void nao_deve_aceitar_cidade_invalido() {
+        EasyRandom enderecoInvalido = new EasyRandom(EnderecoTemplate.enderecoInvalido());
+        invalido = enderecoInvalido.nextObject(Endereco.class);
         endereco.getCidade();
-        assertFalse(ValidaEndereco.valida(Fixture.from(Endereco.class).gimme("cidadeInvalido")));
+        assertFalse(ValidaEndereco.valida(invalido));
     }
 
     /**
@@ -452,8 +472,10 @@ public class EnderecoTest {
      */
     @Test
     public void nao_deve_aceitar_pais_invalido() {
+        EasyRandom enderecoInvalido = new EasyRandom(EnderecoTemplate.enderecoInvalido());
+        invalido = enderecoInvalido.nextObject(Endereco.class);
         endereco.getCep();
-        assertFalse(ValidaEndereco.valida(Fixture.from(Endereco.class).gimme("paisInvalido")));
+        assertFalse(ValidaEndereco.valida(invalido));
     }
 
     /**

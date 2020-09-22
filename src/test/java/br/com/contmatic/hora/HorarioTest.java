@@ -3,15 +3,14 @@ package br.com.contmatic.hora;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.jeasy.random.EasyRandom;
 import org.joda.time.LocalTime;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.com.six2six.fixturefactory.Fixture;
 import nl.jqno.equalsverifier.EqualsVerifier;
 
 // TODO: Auto-generated Javadoc
@@ -25,21 +24,30 @@ public class HorarioTest {
     /** The horario. */
     private Horario horario;
     
-    /**
-     * Load.
-     */
-    @BeforeClass
-    public static void load() {
-        new HorarioTemplate().load();
-    }
-
-    /**
-     * Init.
-     */
+    private Horario invalido;
+    
     @Before
     public void init() {
-        horario = Fixture.from(Horario.class).gimme("valido");
+        EasyRandom horarioValido = new EasyRandom(HorarioTemplate.horarioValido());
+        horario = horarioValido.nextObject(Horario.class);
+        System.out.println(horario);
     }
+    
+//    /**
+//     * Load.
+//     */
+//    @BeforeClass
+//    public static void load() {
+//        new HorarioTemplate().load();
+//    }
+//
+//    /**
+//     * Init.
+//     */
+//    @Before
+//    public void init() {
+//        horario = Fixture.from(Horario.class).gimme("valido");
+//    }
 
     /**
      * Finalize.
@@ -54,8 +62,10 @@ public class HorarioTest {
      */
     @Test
     public void nao_deve_aceitar_entrada_invalido() {
+        EasyRandom horarioInvalido = new EasyRandom(HorarioTemplate.horarioInvalido());
+        invalido = horarioInvalido.nextObject(Horario.class);
         horario.getEntrada();
-        assertFalse(ValidaHorario.valida(Fixture.from(Horario.class).gimme("entradaInvalido")));
+        assertFalse(ValidaHorario.valida(invalido));
     }
 
     /**
@@ -98,8 +108,10 @@ public class HorarioTest {
      */
     @Test
     public void nao_deve_aceitar_saida_almoco_invalido() {
+        EasyRandom horarioInvalido = new EasyRandom(HorarioTemplate.horarioInvalido());
+        invalido = horarioInvalido.nextObject(Horario.class);
         horario.getSaidaAlmoco();
-        assertFalse(ValidaHorario.valida(Fixture.from(Horario.class).gimme("saidaAlmocoInvalido")));
+        assertFalse(ValidaHorario.valida(invalido));
     }
 
     /**
@@ -142,8 +154,10 @@ public class HorarioTest {
      */
     @Test
     public void nao_deve_aceitar_retorno_almoco_invalido() {
+        EasyRandom horarioInvalido = new EasyRandom(HorarioTemplate.horarioInvalido());
+        invalido = horarioInvalido.nextObject(Horario.class);
         horario.getRetornoAlmoco();
-        assertFalse(ValidaHorario.valida(Fixture.from(Horario.class).gimme("retornoAlmocoInvalido")));
+        assertFalse(ValidaHorario.valida(invalido));
     }
 
     /**
@@ -186,8 +200,10 @@ public class HorarioTest {
      */
     @Test
     public void nao_deve_aceitar_saida_invalido() {
+        EasyRandom horarioInvalido = new EasyRandom(HorarioTemplate.horarioInvalido());
+        invalido = horarioInvalido.nextObject(Horario.class);
         horario.getSaida();
-        assertFalse(ValidaHorario.valida(Fixture.from(Horario.class).gimme("saidaInvalido")));
+        assertFalse(ValidaHorario.valida(invalido));
     }
 
     /**

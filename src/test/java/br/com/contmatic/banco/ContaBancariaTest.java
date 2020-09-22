@@ -5,14 +5,13 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
+import org.jeasy.random.EasyRandom;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.com.six2six.fixturefactory.Fixture;
 import nl.jqno.equalsverifier.EqualsVerifier;
 
 // TODO: Auto-generated Javadoc
@@ -24,31 +23,54 @@ import nl.jqno.equalsverifier.EqualsVerifier;
 public class ContaBancariaTest {
 
     /** The conta. */
+
     private ContaBancaria conta;
+    
+    private ContaBancaria invalida;
 
     /**
      * Load.
      */
-    @BeforeClass
-    public static void load() {
-        new BancoTemplate().load();
+
+    @Before
+    public void init() {
+        EasyRandom contaValida = new EasyRandom(BancoTemplate.contaValida());
+        conta = contaValida.nextObject(ContaBancaria.class);
+        System.out.println(conta);
     }
 
     /**
      * Init.
      */
-    @Before
-    public void init() {
-        conta = Fixture.from(ContaBancaria.class).gimme("valido");
-    }
+    // @Before
+    // public void init() {
+    // conta = Fixture.from(ContaBancaria.class).gimme("valido");
+    // }
+
+    // private String randomAgencia() {
+    // return RandomStringUtils.randomNumeric(4);
+    // }
+    //
+    // @Test
+    // public void givenDefaultConfiguration_thenGenerateSingleObject() {
+    // EasyRandomParameters parameters = new EasyRandomParameters()
+    // .randomize(FieldPredicates.named("agencia").and(FieldPredicates.inClass(ContaBancaria.class)), this::randomAgencia)
+    // .randomize(FieldPredicates.named("numero").and(FieldPredicates.inClass(ContaBancaria.class)), () -> "1");
+    //
+    // EasyRandom generator = new EasyRandom(parameters);
+    // conta = generator.nextObject(ContaBancaria.class);
+    // System.out.println(conta);
+    // }
 
     /**
      * Nao deve aceitar titular invalido.
      */
     @Test
     public void nao_deve_aceitar_titular_invalido() {
+        EasyRandom contaInvalida = new EasyRandom(BancoTemplate.contaInvalida());
+        invalida = contaInvalida.nextObject(ContaBancaria.class);
         conta.getTitular();
-        assertFalse(ValidaBanco.valida(Fixture.from(ContaBancaria.class).gimme("titularInvalido")));
+        assertFalse(ValidaBanco.valida(invalida));
     }
 
     /**
@@ -111,7 +133,7 @@ public class ContaBancariaTest {
      */
     @Test
     public void deve_aceitar_titular_nao_nulo_somente_com_letras_e_espacos_de_1_até_100_caracteres() {
-        assertTrue(ValidaBanco.valida(Fixture.from(ContaBancaria.class).gimme("valido")));
+        assertTrue(ValidaBanco.valida(conta));
     }
 
     /**
@@ -132,8 +154,10 @@ public class ContaBancariaTest {
      */
     @Test
     public void nao_deve_aceitar_numero_invalido() {
-        conta.getTitular();
-        assertFalse(ValidaBanco.valida(Fixture.from(ContaBancaria.class).gimme("numeroInvalido")));
+        EasyRandom contaInvalida = new EasyRandom(BancoTemplate.contaInvalida());
+        invalida = contaInvalida.nextObject(ContaBancaria.class);
+        conta.getNumero();
+        assertFalse(ValidaBanco.valida(invalida));
     }
 
     /**
@@ -209,7 +233,7 @@ public class ContaBancariaTest {
     @Test
     public void deve_aceitar_somente_numero_da_conta_nao_nulo_com_até_20_digitos_numericos() {
         conta.setNumero("123");
-        assertTrue(ValidaBanco.valida(Fixture.from(ContaBancaria.class).gimme("valido")));
+        assertTrue(ValidaBanco.valida(conta));
     }
 
     /**
@@ -217,8 +241,10 @@ public class ContaBancariaTest {
      */
     @Test
     public void nao_deve_aceitar_agencia_invalido() {
+        EasyRandom contaInvalida = new EasyRandom(BancoTemplate.contaInvalida());
+        invalida = contaInvalida.nextObject(ContaBancaria.class);
         conta.getAgencia();
-        assertFalse(ValidaBanco.valida(Fixture.from(ContaBancaria.class).gimme("agenciaInvalido")));
+        assertFalse(ValidaBanco.valida(invalida));
     }
 
     /**
@@ -280,7 +306,7 @@ public class ContaBancariaTest {
      */
     @Ignore
     @Test
-    public void nao_deve_aceitar_agencia_com_numero_negativo() { // faz sentido esse teste?
+    public void nao_deve_aceitar_agencia_com_numero_negativo() {
         conta.setAgencia("-4567");
     }
 
@@ -289,7 +315,7 @@ public class ContaBancariaTest {
      */
     @Test
     public void deve_aceitar_agencia_nao_nula_somente_com_quatro_digitos_numericos() {
-        assertTrue(ValidaBanco.valida(Fixture.from(ContaBancaria.class).gimme("valido")));
+        assertTrue(ValidaBanco.valida(conta));
     }
 
     /**

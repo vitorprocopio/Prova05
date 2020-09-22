@@ -3,13 +3,12 @@ package br.com.contmatic.contato;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.jeasy.random.EasyRandom;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.com.six2six.fixturefactory.Fixture;
 import nl.jqno.equalsverifier.EqualsVerifier;
 
 // TODO: Auto-generated Javadoc
@@ -22,30 +21,41 @@ public class ContatoTest {
 
     /** The contato. */
     private Contato contato;
-
-    /**
-     * Load.
-     */
-    @BeforeClass
-    public static void load() {
-        new ContatoTemplate().load();
-    }
-
-    /**
-     * Init.
-     */
+    
+    private Contato invalido;
+    
     @Before
     public void init() {
-        contato = Fixture.from(Contato.class).gimme("valido");
+        EasyRandom contatoValido = new EasyRandom(ContatoTemplate.contatoValido());
+        contato = contatoValido.nextObject(Contato.class);
+        System.out.println(contato);
     }
+
+//    /**
+//     * Load.
+//     */
+//    @BeforeClass
+//    public static void load() {
+//        new ContatoTemplate().load();
+//    }
+//
+//    /**
+//     * Init.
+//     */
+//    @Before
+//    public void init() {
+//        contato = Fixture.from(Contato.class).gimme("valido");
+//    }
 
     /**
      * Nao deve aceitar telefone invalido.
      */
     @Test
     public void nao_deve_aceitar_telefone_invalido() {
+        EasyRandom contatoInvalido = new EasyRandom(ContatoTemplate.contatoInvalido());
+        invalido = contatoInvalido.nextObject(Contato.class);
         contato.getTelefone();
-        assertFalse(ValidaContato.valida(Fixture.from(Contato.class).gimme("telefoneInvalido")));
+        assertFalse(ValidaContato.valida(invalido));
     }
 
     /**
@@ -106,8 +116,10 @@ public class ContatoTest {
      */
     @Test
     public void nao_deve_aceitar_celular_invalido() {
+        EasyRandom contatoInvalido = new EasyRandom(ContatoTemplate.contatoInvalido());
+        invalido = contatoInvalido.nextObject(Contato.class);
         contato.getTelefone();
-        assertFalse(ValidaContato.valida(Fixture.from(Contato.class).gimme("celularInvalido")));
+        assertFalse(ValidaContato.valida(invalido));
     }
 
     /**
@@ -168,8 +180,10 @@ public class ContatoTest {
      */
     @Test
     public void nao_deve_aceitar_recado_invalido() {
+        EasyRandom contatoInvalido = new EasyRandom(ContatoTemplate.contatoInvalido());
+        invalido = contatoInvalido.nextObject(Contato.class);
         contato.getTelefone();
-        assertFalse(ValidaContato.valida(Fixture.from(Contato.class).gimme("recadoInvalido")));
+        assertFalse(ValidaContato.valida(invalido));
     }
 
     /**
@@ -230,8 +244,10 @@ public class ContatoTest {
      */
     @Test
     public void nao_deve_aceitar_email_invalido() {
+        EasyRandom contatoInvalido = new EasyRandom(ContatoTemplate.contatoInvalido());
+        invalido = contatoInvalido.nextObject(Contato.class);
         contato.getEmail();
-        assertFalse(ValidaContato.valida(Fixture.from(Contato.class).gimme("emailInvalido")));
+        assertFalse(ValidaContato.valida(invalido));
     }
 
     /**

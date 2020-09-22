@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 public class ContaBancaria {
 
     /** The titular. */
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Titular inválido")
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú.]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Titular inválido")
     @NotEmpty(message = "O titular não deve ser nulo nem vazio")
     private String titular;
 

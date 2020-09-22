@@ -27,7 +27,7 @@ public class Endereco {
     private String cep;
 
     /** The rua. */
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú_0-9][A-ZÀ-Ú a-zà-ú_0-9]{0,98}[A-ZÀ-Úa-zà-ú_0-9]$", message = "A rua deve ter até 100 caracteres alfanuméricos")
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú_0-9][A-ZÀ-Ú a-zà-ú_0-9']{0,98}[A-ZÀ-Úa-zà-ú_0-9]$", message = "A rua deve ter até 100 caracteres alfanuméricos")
     @NotBlank(message = "Não deve aceitar rua nulo nem vazio")
     private String rua;
 
@@ -59,7 +59,7 @@ public class Endereco {
     private Estado uf;
 
     /** The pais. */
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú][A-ZÀ-Ú a-zà-ú]{0,48}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "O país deve ter até 50 caracteres alfanumericos")
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú][A-ZÀ-Ú a-zà-ú-.,'()&]{0,53}[A-Za-zA-ZÀ-Úa-zà-ú.()]$", message = "O país deve ter até 55 caracteres alfanumericos")
     @NotBlank(message = "Não deve conter país nulo")
     private String pais;
 

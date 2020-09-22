@@ -1,5 +1,7 @@
 package br.com.contmatic.enums;
 
+import java.util.Random;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Enum Genero.
@@ -35,5 +37,12 @@ public enum Genero {
     public String getNome() {
         return descricao;
     }
-
+    
+    public static Genero randomSexo(){
+        Random random = new Random();
+        int indice = random.nextInt(3);
+        
+        Genero sexo = Genero.values()[indice];
+        return sexo;
+    }
 }

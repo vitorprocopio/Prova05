@@ -3,14 +3,13 @@ package br.com.contmatic.empresa;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.jeasy.random.EasyRandom;
 import org.joda.time.LocalDate;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.com.six2six.fixturefactory.Fixture;
 import nl.jqno.equalsverifier.EqualsVerifier;
 
 // TODO: Auto-generated Javadoc
@@ -23,30 +22,41 @@ public class ClienteTest {
 
     /** The cliente. */
     private Cliente cliente;
-
-    /**
-     * Load.
-     */
-    @BeforeClass
-    public static void load() {
-        new ClienteTemplate().load();
-    }
-
-    /**
-     * Init.
-     */
+    
+    private Cliente invalido;
+    
     @Before
     public void init() {
-        cliente = Fixture.from(Cliente.class).gimme("valido");
+        EasyRandom clienteValido = new EasyRandom(ClienteTemplate.clienteValido());
+        cliente = clienteValido.nextObject(Cliente.class);
+        System.out.println(cliente);
     }
+
+//    /**
+//     * Load.
+//     */
+//    @BeforeClass
+//    public static void load() {
+//        new ClienteTemplate().load();
+//    }
+//
+//    /**
+//     * Init.
+//     */
+//    @Before
+//    public void init() {
+//        cliente = Fixture.from(Cliente.class).gimme("valido");
+//    }
 
     /**
      * Nao deve aceitar codigo invalido.
      */
     @Test
     public void nao_deve_aceitar_codigo_invalido() {
+        EasyRandom clienteInvalido = new EasyRandom(ClienteTemplate.clienteInvalido());
+        invalido = clienteInvalido.nextObject(Cliente.class);
         cliente.getCodigo();
-        assertFalse(ValidaCliente.valida(Fixture.from(Cliente.class).gimme("codigoInvalido")));
+        assertFalse(ValidaCliente.valida(invalido));
     }
 
     /**
@@ -125,8 +135,10 @@ public class ClienteTest {
      */
     @Test
     public void nao_deve_aceitar_nome_invalido() {
-        cliente.getCodigo();
-        assertFalse(ValidaCliente.valida(Fixture.from(Cliente.class).gimme("nomeInvalido")));
+        EasyRandom clienteInvalido = new EasyRandom(ClienteTemplate.clienteInvalido());
+        invalido = clienteInvalido.nextObject(Cliente.class);
+        cliente.getNome();
+        assertFalse(ValidaCliente.valida(invalido));
     }
 
     /**
@@ -218,8 +230,10 @@ public class ClienteTest {
      */
     @Test
     public void nao_deve_aceitar_cpf_invalido() {
-        cliente.getCodigo();
-        assertFalse(ValidaCliente.valida(Fixture.from(Cliente.class).gimme("cpfInvalido")));
+        EasyRandom clienteInvalido = new EasyRandom(ClienteTemplate.clienteInvalido());
+        invalido = clienteInvalido.nextObject(Cliente.class);
+        cliente.getCpf();
+        assertFalse(ValidaCliente.valida(invalido));
     }
 
     /**
@@ -341,8 +355,10 @@ public class ClienteTest {
      */
     @Test
     public void nao_deve_aceitar_data_nascimento_invalida() {
-        cliente.getCodigo();
-        assertFalse(ValidaCliente.valida(Fixture.from(Cliente.class).gimme("dataNascimentoInvalido")));
+        EasyRandom clienteInvalido = new EasyRandom(ClienteTemplate.clienteInvalido());
+        invalido = clienteInvalido.nextObject(Cliente.class);
+        cliente.getDataNascimento();
+        assertFalse(ValidaCliente.valida(invalido));
     }
 
     /**

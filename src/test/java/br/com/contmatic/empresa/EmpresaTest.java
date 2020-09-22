@@ -3,13 +3,12 @@ package br.com.contmatic.empresa;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.jeasy.random.EasyRandom;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.com.six2six.fixturefactory.Fixture;
 import nl.jqno.equalsverifier.EqualsVerifier;
 
 // TODO: Auto-generated Javadoc
@@ -22,30 +21,42 @@ public class EmpresaTest {
 
     /** The empresa. */
     private Empresa empresa;
+    
+    private Empresa invalida;
+    
+    @Before
+    @Test
+    public void init() {
+        EasyRandom empresaValida = new EasyRandom(EmpresaTemplate.empresaValida());
+        empresa = empresaValida.nextObject(Empresa.class);
+        System.out.println(empresa);
+    }
 
     /**
      * Load.
      */
-    @BeforeClass
-    public static void load() {
-        new EmpresaTemplate().load();
-    }
-
-    /**
-     * Init.
-     */
-    @Before
-    public void init() {
-        empresa = Fixture.from(Empresa.class).gimme("valido");
-    }
+    // @BeforeClass
+    // public static void load() {
+    // new EmpresaTemplate().load();
+    // }
+    //
+    // /**
+    // * Init.
+    // */
+    // @Before
+    // public void init() {
+    // empresa = Fixture.from(Empresa.class).gimme("valido");
+    // }
 
     /**
      * Nao deve aceitar codigo invalido.
      */
     @Test
     public void nao_deve_aceitar_codigo_invalido() {
+        EasyRandom empresaInvalida = new EasyRandom(EmpresaTemplate.empresaInvalida());
+        invalida = empresaInvalida.nextObject(Empresa.class);
         empresa.getCodigo();
-        assertFalse(ValidaEmpresa.valida(Fixture.from(Empresa.class).gimme("codigoInvalido")));
+        assertFalse(ValidaEmpresa.valida(invalida));
     }
 
     /**
@@ -125,8 +136,10 @@ public class EmpresaTest {
      */
     @Test
     public void nao_deve_aceitar_cnpj_invalido() {
+        EasyRandom empresaInvalida = new EasyRandom(EmpresaTemplate.empresaInvalida());
+        invalida = empresaInvalida.nextObject(Empresa.class);
         empresa.getCnpj();
-        assertFalse(ValidaEmpresa.valida(Fixture.from(Empresa.class).gimme("cnpjInvalido")));
+        assertFalse(ValidaEmpresa.valida(invalida));
     }
 
     /**
@@ -249,8 +262,10 @@ public class EmpresaTest {
      */
     @Test
     public void nao_deve_aceitar_nome_fantasia_invalido() {
-        empresa.getCnpj();
-        assertFalse(ValidaEmpresa.valida(Fixture.from(Empresa.class).gimme("nomeFantasiaInvalido")));
+        EasyRandom empresaInvalida = new EasyRandom(EmpresaTemplate.empresaInvalida());
+        invalida = empresaInvalida.nextObject(Empresa.class);
+        empresa.getNomeFantasia();
+        assertFalse(ValidaEmpresa.valida(invalida));
     }
 
     /**
@@ -325,8 +340,10 @@ public class EmpresaTest {
      */
     @Test
     public void nao_deve_aceitar_razao_social_invalido() {
-        empresa.getCnpj();
-        assertFalse(ValidaEmpresa.valida(Fixture.from(Empresa.class).gimme("razaoSocialInvalido")));
+        EasyRandom empresaInvalida = new EasyRandom(EmpresaTemplate.empresaInvalida());
+        invalida = empresaInvalida.nextObject(Empresa.class);
+        empresa.getRazaoSocial();
+        assertFalse(ValidaEmpresa.valida(invalida));
     }
 
     /**
@@ -411,7 +428,7 @@ public class EmpresaTest {
     public void deve_aceitar_endereco_nao_nulo_de_acordo_com_as_regras_da_classe_endereco() {
         assertTrue(ValidaEmpresa.valida(empresa));
     }
-    
+
     @Test
     public void equalsContract() {
         EqualsVerifier.simple().forClass(Empresa.class).withIgnoredFields("codigo", "nomeFantasia", "razaoSocial", "enderecos").verify();
