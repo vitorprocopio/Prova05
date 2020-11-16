@@ -33,19 +33,6 @@ public class FuncionarioTest {
     }
 
     /**
-     * Load.
-     */
-//    @BeforeClass
-//    public static void load() {
-//        new FuncionarioTemplate().load();
-//    }
-//    @Test
-//    public void testeRandom() {
-//        System.out.println(FuncionarioTemplate.randomSalarioValido());
-//    }
-    
-
-    /**
      * Nao deve aceitar codigo invalido.
      */
     @Test

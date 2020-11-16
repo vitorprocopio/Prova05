@@ -45,11 +45,11 @@ public class EmpresaTemplate {
     }
     
     public static String randomNomeFantasiaValido() {
-        return RandomStringUtils.randomAlphanumeric(1, 51);
+        return RandomStringUtils.randomAlphanumeric(3, 51);
     }
     
     public static String randomRazaoSocialValida() {
-        return RandomStringUtils.randomAlphanumeric(1, 51);
+        return RandomStringUtils.randomAlphanumeric(3, 51);
     }
     
     public static String randomAlfanumericoMais50() {
