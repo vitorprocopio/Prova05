@@ -8,6 +8,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import br.com.contmatic.annotations.Post;
+import br.com.contmatic.annotations.Put;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class ContaBancaria.
@@ -15,18 +18,18 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 public class ContaBancaria {
 
     /** The titular. */
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú.]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Titular inválido")
-    @NotEmpty(message = "O titular não deve ser nulo nem vazio")
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú.]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Titular inválido", groups = {Post.class, Put.class})
+    @NotEmpty(message = "O titular não deve ser nulo nem vazio", groups = {Post.class, Put.class})
     private String titular;
 
     /** The numero. */
-    @Pattern(regexp = "\\d{1,20}", message = "Numero da conta inválido")
-    @NotEmpty(message = "O número da conta não deve ser nulo nem vazio")
+    @Pattern(regexp = "\\d{1,20}", message = "Numero da conta inválido", groups = {Post.class, Put.class})
+    @NotEmpty(message = "O número da conta não deve ser nulo nem vazio", groups = {Post.class, Put.class})
     private String numero;
 
     /** The agencia. */
-    @Pattern(regexp = "\\d{4}", message = "Numero da agência inválido")
-    @NotEmpty(message = "A agência não deve ser nula nem vazia")
+    @Pattern(regexp = "\\d{4}", message = "Numero da agência inválido", groups = {Post.class, Put.class})
+    @NotEmpty(message = "A agência não deve ser nula nem vazia", groups = {Post.class, Put.class})
     private String agencia;
 
     /**

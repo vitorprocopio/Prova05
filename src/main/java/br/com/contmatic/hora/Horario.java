@@ -12,6 +12,8 @@ import br.com.contmatic.annotations.HorarioEntrada;
 import br.com.contmatic.annotations.HorarioRetornoAlmoco;
 import br.com.contmatic.annotations.HorarioSaida;
 import br.com.contmatic.annotations.HorarioSaidaAlmoco;
+import br.com.contmatic.annotations.Post;
+import br.com.contmatic.annotations.Put;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -21,22 +23,22 @@ public class Horario {
 
     /** The entrada. */
     @HorarioEntrada
-    @NotNull(message = "Não deve conter entrada nula")
+    @NotNull(message = "Não deve conter entrada nula", groups = {Post.class, Put.class})
     private LocalTime entrada;
 
     /** The saida almoco. */
     @HorarioSaidaAlmoco
-    @NotNull(message = "Não deve conter saida para o almoço nula")
+    @NotNull(message = "Não deve conter saida para o almoço nula", groups = {Post.class, Put.class})
     private LocalTime saidaAlmoco;
 
     /** The retorno almoco. */
     @HorarioRetornoAlmoco
-    @NotNull(message = "Não deve conter retorno para o almoço nulo")
+    @NotNull(message = "Não deve conter retorno para o almoço nulo", groups = {Post.class, Put.class})
     private LocalTime retornoAlmoco;
 
     /** The saida. */
     @HorarioSaida
-    @NotNull(message = "Não deve conter saída nula")
+    @NotNull(message = "Não deve conter saída nula", groups = {Post.class, Put.class})
     private LocalTime saida;
 
     /**

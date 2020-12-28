@@ -17,6 +17,8 @@ import org.hibernate.validator.constraints.br.CPF;
 import org.joda.time.LocalDate;
 
 import br.com.contmatic.annotations.DataApos1900;
+import br.com.contmatic.annotations.Post;
+import br.com.contmatic.annotations.Put;
 import br.com.contmatic.contato.Contato;
 import br.com.contmatic.endereco.Endereco;
 // TODO: Auto-generated Javadoc
@@ -28,34 +30,34 @@ import br.com.contmatic.endereco.Endereco;
 public class Cliente {
 
     /** The codigo. */
-    @Pattern(regexp = "[0-9]{1,5}", message = "Código inválido")
-    @NotEmpty(message = "Não deve aceitar código nulo nem vazio")
+    @Pattern(regexp = "[0-9]{1,5}", message = "Código inválido", groups = Put.class)
+    @NotEmpty(message = "Não deve aceitar código nulo nem vazio", groups = Put.class)
     private String codigo;
 
     /** The nome. */
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú.]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome inválido")
-    @NotBlank(message = "Não deve aceitar nome nulo nem vazio")
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú.]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome inválido", groups = {Post.class, Put.class})
+    @NotBlank(message = "Não deve aceitar nome nulo nem vazio", groups = {Post.class, Put.class})
     private String nome;
 
     /** The data nascimento. */
-    @Past(message = "A data de nascimento deve ser anterior a data atual")
-    @NotNull(message = "A data de nascimento não deve ser nula")
+    @Past(message = "A data de nascimento deve ser anterior a data atual", groups = {Post.class, Put.class})
+    @NotNull(message = "A data de nascimento não deve ser nula", groups = {Post.class, Put.class})
     @DataApos1900
     private LocalDate dataNascimento;
 
     /** The cpf. */
-    @CPF
-    @NotNull(message = "Não deve aceitar cpf nulo")
+    @CPF(groups = Post.class)
+    @NotNull(message = "Não deve aceitar cpf nulo", groups = Post.class)
     private String cpf;
 
     /** The enderecos. */
     @Valid
-    @NotNull(message = "Não deve aceitar endereco nulo")
+    @NotNull(message = "Não deve aceitar endereco nulo", groups = {Post.class, Put.class})
     private Set<Endereco> enderecos;
 
     /** The contatos. */
     @Valid
-    @NotNull(message = "Não deve aceitar contato nulo")
+    @NotNull(message = "Não deve aceitar contato nulo", groups = {Post.class, Put.class})
     private Set<Contato> contatos;
 
     /**

@@ -14,6 +14,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.hibernate.validator.constraints.br.CNPJ;
 
+import br.com.contmatic.annotations.Post;
+import br.com.contmatic.annotations.Put;
 import br.com.contmatic.endereco.Endereco;
 // TODO: Auto-generated Javadoc
 //import br.com.contmatic.validacao.ValidaCnpj;
@@ -24,25 +26,25 @@ import br.com.contmatic.endereco.Endereco;
 public class Empresa {
 
     /** The codigo. */
-    @NotEmpty(message = "Não deve aceitar código nulo nem vazio")
-    @Pattern(regexp = "\\d{1,5}", message = "Código inválido")
+    @NotEmpty(message = "Não deve aceitar código nulo nem vazio", groups = Put.class)
+    @Pattern(regexp = "\\d{1,5}", message = "Código inválido", groups = Put.class)
     private String codigo;
 
     /** The cnpj. */
-    @CNPJ
-    @NotNull(message = "Cnpj não pode ser nulo")
+    @CNPJ(groups = Post.class)
+    @NotNull(message = "Cnpj não pode ser nulo", groups = Post.class)
     private String cnpj;
 
     /** The nome fantasia. */
-    @Size(max = 100)
-    @NotBlank(message = "Nome fantasia não pode ser nulo nem vazio")
-    @Pattern(regexp = "^['A-ZÀ-Úa-zà-ú0-9!@#$%&*-+_§.,;]['A-ZÀ-Ú a-zà-ú0-9!@#$%&*-+_§.,;]{0,98}['A-ZÀ-Úa-zà-ú0-9!@#$%&*-+_§.,;]$", message = "Nome fantasia inválido")
+    @Size(max = 100, groups = {Post.class, Put.class})
+    @NotBlank(message = "Nome fantasia não pode ser nulo nem vazio", groups = {Post.class, Put.class})
+    @Pattern(regexp = "^['A-ZÀ-Úa-zà-ú0-9!@#$%&*-+_§.,;]['A-ZÀ-Ú a-zà-ú0-9!@#$%&*-+_§.,;]{0,98}['A-ZÀ-Úa-zà-ú0-9!@#$%&*-+_§.,;]$", message = "Nome fantasia inválido", groups = {Post.class, Put.class})
     private String nomeFantasia;
 
     /** The razao social. */
-    @Size(max = 100)
-    @NotBlank(message = "Razão social não pode ser nulo nem vazio")
-    @Pattern(regexp = "^[0-9A-ZÀ-Úa-zà-ú'!@#$%&*-+_§.,;][ 0-9A-ZÀ-Úa-zà-ú'!@#$%&*-+_§.,;]{0,98}[0-9A-ZÀ-Úa-zà-ú'!@#$%&*-+_§.,;]$", message = "Razão social inválido")
+    @Size(max = 100, groups = {Post.class, Put.class})
+    @NotBlank(message = "Razão social não pode ser nulo nem vazio", groups = {Post.class, Put.class})
+    @Pattern(regexp = "^[0-9A-ZÀ-Úa-zà-ú'!@#$%&*-+_§.,;][ 0-9A-ZÀ-Úa-zà-ú'!@#$%&*-+_§.,;]{0,98}[0-9A-ZÀ-Úa-zà-ú'!@#$%&*-+_§.,;]$", message = "Razão social inválido", groups = {Post.class, Put.class})
     private String razaoSocial;
 
     /** The enderecos. */

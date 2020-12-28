@@ -18,6 +18,8 @@ import org.hibernate.validator.constraints.br.CPF;
 import org.joda.time.LocalDate;
 
 import br.com.contmatic.annotations.DataApos1900;
+import br.com.contmatic.annotations.Post;
+import br.com.contmatic.annotations.Put;
 import br.com.contmatic.banco.ContaBancaria;
 import br.com.contmatic.endereco.Endereco;
 import br.com.contmatic.enums.Genero;
@@ -30,55 +32,55 @@ import br.com.contmatic.hora.Horario;
 public class Funcionario {
 
     /** The codigo. */
-    @NotEmpty(message = "Não deve aceitar código nulo nem vazio")
-    @Pattern(regexp = "\\d{0,5}", message = "Código inválido")
+    @NotEmpty(message = "Não deve aceitar código nulo nem vazio", groups = Put.class)
+    @Pattern(regexp = "\\d{0,5}", message = "Código inválido", groups = Put.class)
     private String codigo;
 
     /** The nome. */
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú.]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome inválido")
-    @NotBlank(message = "Não deve aceitar nome nulo nem vazio")
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú.]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome inválido", groups = {Post.class, Put.class})
+    @NotBlank(message = "Não deve aceitar nome nulo nem vazio", groups = {Post.class, Put.class})
     private String nome;
 
     /** The data nascimento. */
-    @Past(message = "A data de nascimento deve ser anterior a data atual")
-    @NotNull(message = "A data de nascimento não deve ser nula")
+    @Past(message = "A data de nascimento deve ser anterior a data atual", groups = {Post.class, Put.class})
+    @NotNull(message = "A data de nascimento não deve ser nula", groups = {Post.class, Put.class})
     @DataApos1900
     private LocalDate dataNascimento;
 
     /** The nome mae. */
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú.]['A-ZÀ-Ú a-zà-ú.]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú.]$", message = "Nome mãe inválido")
-    @NotBlank(message = "Não deve aceitar nome da mãe nulo nem vazio")
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú.]['A-ZÀ-Ú a-zà-ú.]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú.]$", message = "Nome mãe inválido", groups = {Post.class, Put.class})
+    @NotBlank(message = "Não deve aceitar nome da mãe nulo nem vazio", groups = {Post.class, Put.class})
     private String nomeMae;
 
     /** The nome pai. */
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú.]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome pai inválido")
-    @NotBlank(message = "Não deve aceitar nome do pai nulo nem vazio")
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú]['A-ZÀ-Ú a-zà-ú.]{0,98}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "Nome pai inválido", groups = {Post.class, Put.class})
+    @NotBlank(message = "Não deve aceitar nome do pai nulo nem vazio", groups = {Post.class, Put.class})
     private String nomePai;
 
     /** The cpf. */
-    @CPF
-    @NotNull(message = "Não deve aceitar cpf nulo")
+    @CPF(groups = Post.class)
+    @NotNull(message = "Não deve aceitar cpf nulo", groups = Post.class)
     private String cpf;
 
     /** The sexo. */
-    @NotNull(message = "Não deve aceitar sexo nulo")
+    @NotNull(message = "Não deve aceitar sexo nulo", groups = {Post.class, Put.class})
     private Genero sexo;
 
     /** The enderecos. */
-    @NotNull(message = "Não deve aceitar endereço nulo")
+    @NotNull(message = "Não deve aceitar endereço nulo", groups = {Post.class, Put.class})
     private Set<Endereco> enderecos;
 
     /** The salario. */
-    @DecimalMin(value = "0.00", message = "O valor do salário não pode ser negativo")
-    @Digits(integer = 5, fraction = 2, message = "O valor do salário está inválido")
+    @DecimalMin(value = "0.00", message = "O valor do salário não pode ser negativo", groups = {Post.class, Put.class})
+    @Digits(integer = 5, fraction = 2, message = "O valor do salário está inválido", groups = {Post.class, Put.class})
     private double salario;
 
     /** The horario. */
-    @NotNull(message = "Não deve aceitar horário nulo")
+    @NotNull(message = "Não deve aceitar horário nulo", groups = {Post.class, Put.class})
     private Horario horario;
 
     /** The conta. */
-    @NotNull(message = "Não deve aceitar Conta Bancaria nulo")
+    @NotNull(message = "Não deve aceitar Conta Bancaria nulo", groups = {Post.class, Put.class})
     private ContaBancaria conta;
 
     /**

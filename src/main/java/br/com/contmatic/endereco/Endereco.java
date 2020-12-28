@@ -13,6 +13,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import br.com.contmatic.annotations.Post;
+import br.com.contmatic.annotations.Put;
 import br.com.contmatic.enums.Estado;
 
 // TODO: Auto-generated Javadoc
@@ -22,45 +24,45 @@ import br.com.contmatic.enums.Estado;
 public class Endereco {
 
     /** The cep. */
-    @Pattern(regexp = "\\d{8}", message = "O CEP deve conter somente 8 digítos numéricos")
-    @NotNull(message = "Não deve conter CEP nulo")
+    @Pattern(regexp = "\\d{8}", message = "O CEP deve conter somente 8 digítos numéricos", groups = {Post.class, Put.class})
+    @NotNull(message = "Não deve conter CEP nulo", groups = {Post.class, Put.class})
     private String cep;
 
     /** The rua. */
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú_0-9][A-ZÀ-Ú a-zà-ú_0-9']{0,98}[A-ZÀ-Úa-zà-ú_0-9]$", message = "A rua deve ter até 100 caracteres alfanuméricos")
-    @NotBlank(message = "Não deve aceitar rua nulo nem vazio")
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú_0-9][A-ZÀ-Ú a-zà-ú_0-9']{0,98}[A-ZÀ-Úa-zà-ú_0-9]$", message = "A rua deve ter até 100 caracteres alfanuméricos", groups = {Post.class, Put.class})
+    @NotBlank(message = "Não deve aceitar rua nulo nem vazio", groups = {Post.class, Put.class})
     private String rua;
 
     /** The numero. */
-    @Min(value = 1, message = "O número deve ser maior ou igual a 1")
-    @Max(value = 99999, message = "O número deve ser menor ou igual a 99999")
-    @NotNull(message = "Não deve conter número nulo")
+    @Min(value = 1, message = "O número deve ser maior ou igual a 1", groups = {Post.class, Put.class})
+    @Max(value = 99999, message = "O número deve ser menor ou igual a 99999", groups = {Post.class, Put.class})
+    @NotNull(message = "Não deve conter número nulo", groups = {Post.class, Put.class})
     private Integer numero;
 
     /** The complemento. */
-    @Size(max = 50)
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú0-9]{0,1}[A-ZÀ-Ú a-zà-ú_0-9]{0,48}[A-ZÀ-Úa-zà-ú0-9]{0,1}$", message = "O complemento deve ter até 50 caracteres alfanumericos")
+    @Size(max = 50, groups = {Post.class, Put.class})
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú0-9]{0,1}[A-ZÀ-Ú a-zà-ú_0-9]{0,48}[A-ZÀ-Úa-zà-ú0-9]{0,1}$", message = "O complemento deve ter até 50 caracteres alfanumericos", groups = {Post.class, Put.class})
     private String complemento;
 
     /** The bairro. */
     @Size(max = 50)
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú0-9][A-ZÀ-Ú a-zà-ú_0-9]{0,48}[A-ZÀ-Úa-zà-ú0-9]$", message = "O bairro deve ter até 50 caracteres alfanumericos")
-    @NotBlank(message = "Não deve conter bairro nulo")
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú0-9][A-ZÀ-Ú a-zà-ú_0-9]{0,48}[A-ZÀ-Úa-zà-ú0-9]$", message = "O bairro deve ter até 50 caracteres alfanumericos", groups = {Post.class, Put.class})
+    @NotBlank(message = "Não deve conter bairro nulo", groups = {Post.class, Put.class})
     private String bairro;
 
     /** The cidade. */
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú][A-ZÀ-Ú a-zà-ú]{0,48}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "A cidade deve ter até 50 caracteres alfanumericos")
-    @NotBlank(message = "Não deve conter cidade nula nem vazia")
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú][A-ZÀ-Ú a-zà-ú]{0,48}[A-Za-zA-ZÀ-Úa-zà-ú]$", message = "A cidade deve ter até 50 caracteres alfanumericos", groups = {Post.class, Put.class})
+    @NotBlank(message = "Não deve conter cidade nula nem vazia", groups = {Post.class, Put.class})
     private String cidade;
 
     /** The uf. */
     @Valid
-    @NotNull(message = "Não deve conter UF nulo")
+    @NotNull(message = "Não deve conter UF nulo", groups = {Post.class, Put.class})
     private Estado uf;
 
     /** The pais. */
-    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú][A-ZÀ-Ú a-zà-ú-.,'()&]{0,53}[A-Za-zA-ZÀ-Úa-zà-ú.()]$", message = "O país deve ter até 55 caracteres alfanumericos")
-    @NotBlank(message = "Não deve conter país nulo")
+    @Pattern(regexp = "^[A-ZÀ-Úa-zà-ú][A-ZÀ-Ú a-zà-ú-.,'()&]{0,53}[A-Za-zA-ZÀ-Úa-zà-ú.()]$", message = "O país deve ter até 55 caracteres alfanumericos", groups = {Post.class, Put.class})
+    @NotBlank(message = "Não deve conter país nulo", groups = {Post.class, Put.class})
     private String pais;
 
     /**

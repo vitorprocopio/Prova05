@@ -8,6 +8,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import br.com.contmatic.annotations.Post;
+import br.com.contmatic.annotations.Put;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class Contato.
@@ -15,19 +18,19 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 public class Contato {
 
     /** The telefone. */
-    @Pattern(regexp = "\\d{8}", message = "O telefone deve conter somente 8 digítos numéricos")
+    @Pattern(regexp = "\\d{8}", message = "O telefone deve conter somente 8 digítos numéricos", groups = {Post.class, Put.class})
     private String telefone;
 
     /** The celular. */
-    @Pattern(regexp = "\\d{9}", message = "O celular deve conter somente 9 digítos numéricos")
+    @Pattern(regexp = "\\d{9}", message = "O celular deve conter somente 9 digítos numéricos", groups = {Post.class, Put.class})
     private String celular;
 
     /** The recado. */
-    @Pattern(regexp = "\\d{8,9}", message = "O número para contato deve conter somente 8 ou 9 digítos numéricos")
+    @Pattern(regexp = "\\d{8,9}", message = "O número para contato deve conter somente 8 ou 9 digítos numéricos", groups = {Post.class, Put.class})
     private String recado;
 
     /** The email. */
-    @Email(message = "O endereço de email é inválido")
+    @Email(message = "O endereço de email é inválido", groups = {Post.class, Put.class})
     private String email;
 
     /**
