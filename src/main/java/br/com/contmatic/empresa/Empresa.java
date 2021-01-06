@@ -2,6 +2,7 @@ package br.com.contmatic.empresa;
 
 import java.util.Set;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -26,13 +27,14 @@ import br.com.contmatic.endereco.Endereco;
 public class Empresa {
 
     /** The codigo. */
-    @NotEmpty(message = "Não deve aceitar código nulo nem vazio", groups = Put.class)
-    @Pattern(regexp = "\\d{1,5}", message = "Código inválido", groups = Put.class)
+    
+    @NotEmpty(message = "Não deve aceitar código nulo nem vazio", groups = {Post.class, Put.class})
+    @Pattern(regexp = "\\d{1,5}", message = "Código inválido", groups = {Post.class, Put.class})
     private String codigo;
 
     /** The cnpj. */
-    @CNPJ(groups = Post.class)
-    @NotNull(message = "Cnpj não pode ser nulo", groups = Post.class)
+    @CNPJ(groups = {Post.class, Put.class})
+    @NotNull(message = "Cnpj não pode ser nulo", groups = {Post.class, Put.class})
     private String cnpj;
 
     /** The nome fantasia. */
@@ -48,6 +50,7 @@ public class Empresa {
     private String razaoSocial;
 
     /** The enderecos. */
+    @Valid
     @NotNull(message = "Endereço não pode ser nulo")
     private Set<Endereco> enderecos;
 

@@ -7,6 +7,9 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import br.com.contmatic.annotations.Post;
+import br.com.contmatic.annotations.Put;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class ValidaBanco.
@@ -43,7 +46,7 @@ public class ValidaBanco {
         System.out.println(conta);
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
-        Set<ConstraintViolation<ContaBancaria>> violacoes = validator.validate(conta);
+        Set<ConstraintViolation<ContaBancaria>> violacoes = validator.validate(conta, Post.class, Put.class);
         for(ConstraintViolation<ContaBancaria> constraintViolation : violacoes) {
             System.out.println(constraintViolation.getMessage());
             return false;

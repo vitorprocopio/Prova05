@@ -7,6 +7,9 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import br.com.contmatic.annotations.Post;
+import br.com.contmatic.annotations.Put;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class ValidaEmpresa.
@@ -43,7 +46,7 @@ public class ValidaEmpresa {
         System.out.println(empresa);
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
-        Set<ConstraintViolation<Empresa>> violacoes = validator.validate(empresa);
+        Set<ConstraintViolation<Empresa>> violacoes = validator.validate(empresa, Post.class, Put.class);
         for(ConstraintViolation<Empresa> constraintViolation : violacoes) {
             System.out.println(constraintViolation.getMessage());
             return false;
